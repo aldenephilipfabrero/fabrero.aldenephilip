@@ -34,6 +34,6 @@
         </tr>
         <?php endforeach; ?>
     </table>
-    <a href="<?=site_url('user/create');?>">Create Record</a>
+    <a href="<?=site_url('user/create');?>">Create Records</a>
 </body>
 </html>
