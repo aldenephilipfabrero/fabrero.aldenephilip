@@ -21,8 +21,15 @@ class UserController extends Controller {
 
     public function show()
     {
-        $data ['students'] = $this->UserModel->all();
-        $this->call->view('Showdata', $data);
+        $page = 1;
+        if(isset($_GET['page']) && ! empty($_GET['page'])) {
+            $page = $this->io->get('page');
+        }
+
+        $q = '';
+        if(isset($_GET['q']) && ! empty($_GET['q'])) {
+            $q = trim($this->io->get('q'));
+        }
 
         $records_per_page = 3;
 
