@@ -1,0 +1,103 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #e3eafc 0%, #f0f4f8 100%);
+    margin: 0;
+    padding: 32px;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 32px;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+
+table {
+    width: 85%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 16px 18px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+th {
+    background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+tr:nth-child(even) {
+    background: #f6faff;
+}
+
+tr:hover {
+    background: #e3f0ff;
+    transition:  0.2s;
+}
+
+a {
+    text-decoration: none;
+    font-size: 15px;
+    margin: 0 6px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 6px rgba(0,123,255,0.08);
+    font-weight: 500;
+    display: inline-block;
+}
+
+a[href*="update"] {
+    background: linear-gradient(90deg, #ffe082 60%, #ffc107 100%);
+    color: #333;
+    border: 1px solid #ffc107;
+}
+
+a[href*="update"]:hover {
+    background: #e0a800;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(255,193,7,0.15);
+}
+
+a[href*="delete"] {
+    background: linear-gradient(90deg, #ff6f6f 60%, #dc3545 100%);
+    color: #fff;
+    border: 1px solid #dc3545;
+}
+
+a[href*="delete"]:hover {
+    background: #a71d2a;
+    box-shadow: 0 2px 8px rgba(220,53,69,0.15);
+}
+
+.create-btn {
+    display: block;
+    width: max-content;
+    margin: 32px auto;
+    padding: 12px 28px;
+    background: linear-gradient(90deg, #43e97b 60%, #38f9d7 100%);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 16px rgba(40,167,69,0.10);
+    border: none;
+    cursor: pointer;
+    transition:  0.2s, box-shadow 0.2s;
+}
+
+.create-btn:hover {
+    background: #218838;
+    box-shadow: 0 6px 24px rgba(40,167,69,0.18);
+}
