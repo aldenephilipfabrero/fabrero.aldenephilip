@@ -31,7 +31,7 @@
                     <th>Email</th>
                     <th>Action</th>
                 </tr>
-                <?php foreach(html_escape($students) as $student): ?>
+                <?php foreach(html_escape($all) as $student): ?>
                 <tr>
                     <td><?=$student['id'];?></td>
                     <td><?=$student['last_name'];?></td>
