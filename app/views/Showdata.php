@@ -48,6 +48,8 @@
                 <?php endforeach; ?>
             </table>
         </div>
+        <?php
+        echo $page;?>
     </div>
 </body>
 </html>
