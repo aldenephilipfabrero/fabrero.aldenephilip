@@ -212,7 +212,7 @@ $config['language'] 				= 'en-US';
 $config['sess_driver']             = 'file';
 $config['sess_cookie_name']        = 'LLSession';
 $config['sess_expiration']         = 7200;
-$config['sess_save_path']          = '';
+$config['sess_save_path']          = '/tmp';
 $config['sess_match_ip']           = TRUE;
 $config['sess_match_fingerprint']  = TRUE;
 $config['sess_time_to_update']     = 300;
@@ -230,7 +230,7 @@ $config['sess_expire_on_close']    = FALSE;
 */
 $config['cookie_prefix']           = '';
 $config['cookie_domain']           = '';
-$config['cookie_path']             = '/';
+$config['cookie_path']             = '/tmp';
 $config['cookie_secure']           = FALSE;
 $config['cookie_expiration']       = 86400;
 $config['cookie_httponly']         = FALSE;
