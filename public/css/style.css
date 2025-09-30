@@ -1,325 +1,235 @@
-
-
-
-
-
-
 table {
-    width: 90vw;
-    max-width: 900px;
-    margin: 0 auto 40px auto;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: #fff;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    border-radius: 18px;
-    overflow: hidden;
-    transition: box-shadow 0.2s;
-    border: 1.5px solid #c3cfe2;
-    position: relative;
-    font-size: 1.08rem;
-}
-
-
-
-h1 {
-    text-align: center;
-    color: #222;
-    margin-bottom: 36px;
-    font-size: 2.8rem;
-    font-family: 'Roboto', Arial, sans-serif;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 8px #c3cfe2;
-    border-bottom: 2px solid #c3cfe2;
-    padding-bottom: 12px;
-}
-
-
-
-
-
-
-
-
-table {
-    width: 90vw;
-    max-width: 900px;
-    margin: 0 auto 40px auto;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: #fff;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    border-radius: 18px;
-    overflow: hidden;
-    transition: box-shadow 0.2s;
-    border: 1.5px solid #c3cfe2;
-    position: relative;
-    /* Enhanced design */
-    font-size: 1.08rem;
-}
-
-
-
-
-
-
-
-
-
-th, td {
-    padding: 18px 22px;
-    text-align: center;
-    font-size: 1.08rem;
-    border: none;
-    color: #222;
-    font-family: 'Roboto', Arial, sans-serif;
-    vertical-align: middle;
-    border-bottom: 1px solid #e3eafc;
-}
-
-
-
-
-
-
-
-
-
-th {
-    background: linear-gradient(90deg, #e3eafc 0%, #c3cfe2 100%);
-    color: #222;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 1.12rem;
-    border: none;
-    border-bottom: 2px solid #c3cfe2;
-    border-top: none;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    cursor: pointer;
-}
-
-
-
-
-
-
-
-
-tr:nth-child(even) {
-    background: #f8fbff;
-}
-
-
-
-
-
-
-
-
-
-tr {
-    transition: background 0.2s, box-shadow 0.2s;
-}
-
-tr:hover {
-    background: #e3eafc;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    z-index: 1;
-    position: relative;
-    cursor: pointer;
-}
-
-tr.selected {
-    background: #c3cfe2 !important;
-    box-shadow: 0 0 0 2px #c3cfe2;
-}
-/* Sorting arrow for sortable columns */
-.sort-arrow {
-    display: inline-block;
-    margin-left: 6px;
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 8px solid #222;
-    vertical-align: middle;
-    transition: transform 0.2s;
-}
-.sort-arrow.desc {
-    transform: rotate(180deg);
-}
-/* Add rounded corners to first and last table cells */
-tr:first-child th:first-child {
-    border-top-left-radius: 18px;
-}
-tr:first-child th:last-child {
-    border-top-right-radius: 18px;
-}
-tr:last-child td:first-child {
-    border-bottom-left-radius: 18px;
-}
-tr:last-child td:last-child {
-    border-bottom-right-radius: 18px;
-}
-/* Tooltip for table cells */
-td[title], th[title] {
-    position: relative;
-}
-td[title]:hover::after, th[title]:hover::after {
-    content: attr(title);
-    position: absolute;
-    left: 50%;
-    bottom: 120%;
-    transform: translateX(-50%);
-    background: #222;
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 6px;
-    white-space: nowrap;
-    font-size: 0.95rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    opacity: 0.95;
-    pointer-events: none;
-    z-index: 10;
-}
-
-/* Add rounded corners to first and last table cells */
-tr:first-child th:first-child {
-    border-top-left-radius: 18px;
-}
-tr:first-child th:last-child {
-    border-top-right-radius: 18px;
-}
-tr:last-child td:first-child {
-    border-bottom-left-radius: 18px;
-}
-tr:last-child td:last-child {
-    border-bottom-right-radius: 18px;
-}
-
-
-
-
-
-
-a {
-    text-decoration: none;
-    font-size: 1rem;
-    margin: 0 6px;
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: 0.2s, color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    font-weight: 500;
-    display: inline-block;
-    background: linear-gradient(90deg, #c3cfe2 0%, #f5f7fa 100%);
-    color: #222;
-    border: 1.5px solid #c3cfe2;
-}
-
-
-
-
-
-
-a[href*="update"] {
-    background: linear-gradient(90deg, #f5f7fa 60%, #c3cfe2 100%);
-    color: #222;
-    border: 1.5px solid #c3cfe2;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-
-
-
-
-
-a[href*="update"]:hover {
-    background: linear-gradient(90deg, #c3cfe2 60%, #f5f7fa 100%);
-    color: #222;
-    box-shadow: 0 4px 16px #c3cfe2;
-}
-
-
-
-
-
-
-a[href*="delete"] {
-    background: linear-gradient(90deg, #c3cfe2 60%, #f5f7fa 100%);
-    color: #222;
-    border: 1.5px solid #c3cfe2;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-
-
-
-
-
-a[href*="delete"]:hover {
-    background: linear-gradient(90deg, #f5f7fa 60%, #c3cfe2 100%);
-    color: #222;
-    box-shadow: 0 4px 16px #c3cfe2;
-}
-
-
-
-
-
-
-
-.create-btn {
-    display: block;
-    width: max-content;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 36px;
-    margin-bottom: 36px;
-    padding: 14px 32px;
-    background: linear-gradient(90deg, #c3cfe2 0%, #f5f7fa 100%);
-    color: #222;
-    font-weight: 700;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-    border: 1.5px solid #c3cfe2;
-    cursor: pointer;
-    letter-spacing: 1px;
-    font-family: 'Roboto', Arial, sans-serif;
-    transition: background 0.2s, box-shadow 0.2s, color 0.2s;
-}
-
-.create-btn:hover {
-    background: linear-gradient(90deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: #222;
-    box-shadow: 0 8px 32px #c3cfe2;
-}
-
-
-
-/* Responsive Design */
-@media (max-width: 700px) {
-    table {
-        width: 99vw;
-        max-width: 99vw;
-        font-size: 1.02rem;
-    }
-    th, td {
-        padding: 12px 8px;
-        font-size: 1.02rem;
-    }
-    .create-btn {
-        padding: 14px 22px;
-        font-size: 1.05rem;
-    }
-    h1 {
-        font-size: 2.4rem;
-    }
-}
-
-/* Marvel Table Images and Extra Design */
+            width: 90vw;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+            border: 1.5px solid #c3cfe2;
+            position: relative;
+            font-size: 1.08rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 36px;
+            font-size: 2.8rem;
+            font-family: 'Roboto', Arial, sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px #c3cfe2;
+            border-bottom: 2px solid #c3cfe2;
+            padding-bottom: 12px;
+        }
+
+        th, td {
+            padding: 18px 22px;
+            text-align: center;
+            font-size: 1.08rem;
+            border: none;
+            color: #222;
+            font-family: 'Roboto', Arial, sans-serif;
+            vertical-align: middle;
+            border-bottom: 1px solid #e3eafc;
+        }
+
+        th {
+            background: linear-gradient(90deg, #e3eafc 0%, #c3cfe2 100%);
+            color: #222;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 1.12rem;
+            border: none;
+            border-bottom: 2px solid #c3cfe2;
+            border-top: none;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            cursor: pointer;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fbff;
+        }
+
+        tr {
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        tr:hover {
+            background: #e3eafc;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            z-index: 1;
+            position: relative;
+            cursor: pointer;
+        }
+
+        tr.selected {
+            background: #c3cfe2 !important;
+            box-shadow: 0 0 0 2px #c3cfe2;
+        }
+
+        .sort-arrow {
+            display: inline-block;
+            margin-left: 6px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid #222;
+            vertical-align: middle;
+            transition: transform 0.2s;
+        }
+
+        .sort-arrow.desc {
+            transform: rotate(180deg);
+        }
+
+        tr:first-child th:first-child {
+            border-top-left-radius: 18px;
+        }
+
+        tr:first-child th:last-child {
+            border-top-right-radius: 18px;
+        }
+
+        tr:last-child td:first-child {
+            border-bottom-left-radius: 18px;
+        }
+
+        tr:last-child td:last-child {
+            border-bottom-right-radius: 18px;
+        }
+
+        td[title], th[title] {
+            position: relative;
+        }
+
+        td[title]:hover::after, th[title]:hover::after {
+            content: attr(title);
+            position: absolute;
+            left: 50%;
+            bottom: 120%;
+            transform: translateX(-50%);
+            background: #222;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 6px;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            opacity: 0.95;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 1rem;
+            margin: 0 6px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: 0.2s, color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-weight: 500;
+            display: inline-block;
+            background: linear-gradient(90deg, #c3cfe2 0%, #f5f7fa 100%);
+            color: #222;
+            border: 1.5px solid #c3cfe2;
+        }
+
+        a[href*="update"] {
+            background: linear-gradient(90deg, #f5f7fa 60%, #c3cfe2 100%);
+            color: #222;
+            border: 1.5px solid #c3cfe2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        a[href*="update"]:hover {
+            background: linear-gradient(90deg, #c3cfe2 60%, #f5f7fa 100%);
+            color: #222;
+            box-shadow: 0 4px 16px #c3cfe2;
+        }
+
+        a[href*="delete"] {
+            background: linear-gradient(90deg, #c3cfe2 60%, #f5f7fa 100%);
+            color: #222;
+            border: 1.5px solid #c3cfe2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        a[href*="delete"]:hover {
+            background: linear-gradient(90deg, #f5f7fa 60%, #c3cfe2 100%);
+            color: #222;
+            box-shadow: 0 4px 16px #c3cfe2;
+        }
+
+        /* * FIX: This container replaces the old .center-container.
+        * It matches the table's width and uses auto-margins to center 
+        * the container block, then uses text-align to center the button 
+        * inside it.
+        */
+        .button-container {
+            width: 90vw;
+            max-width: 900px;
+            margin: 40px auto 40px auto;
+            text-align: center;
+        }
+        .create-btn {
+            /* ...existing styles... */
+            margin-left: -700px; /* Even more offset to the left from center */
+        }
+        
+        /* The old .center-container class is removed as it caused vertical offset. */
+
+        .create-btn {
+            display: inline-block;
+            width: max-content;
+            
+            /* Removed conflicting margins (margin: 0 auto) and display: flex rules */
+            
+            padding: 14px 32px;
+            background: linear-gradient(90deg, #c3cfe2 0%, #f5f7fa 100%);
+            color: #222;
+            font-weight: 700;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            border: 1.5px solid #c3cfe2;
+            cursor: pointer;
+            letter-spacing: 1px;
+            font-family: 'Roboto', Arial, sans-serif;
+            transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+        }
+
+        .create-btn:hover {
+            background: linear-gradient(90deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #222;
+            box-shadow: 0 8px 32px #c3cfe2;
+        }
+
+        @media (max-width: 700px) {
+            table {
+                width: 99vw;
+                max-width: 99vw;
+                font-size: 1.02rem;
+            }
+            th, td {
+                padding: 12px 8px;
+                font-size: 1.02rem;
+            }
+            .create-btn {
+                padding: 14px 22px;
+                font-size: 1.05rem;
+            }
+            h1 {
+                font-size: 2.4rem;
+            }
+        }
+   
