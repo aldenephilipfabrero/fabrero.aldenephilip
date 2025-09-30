@@ -11,6 +11,16 @@
         <h1>Welcome to My Data</h1>
         <div class="button-container">
             <a href="<?=site_url('user/create');?>" class="create-btn">Create Record</a>
+             <form action="<?=site_url('/');?>" method="get" class="col-sm-4 float-end d-flex">
+		<?php
+		$q = '';
+		if(isset($_GET['q'])) {
+			$q = $_GET['q'];
+		}
+		?>
+        <input class="form-control me-2" name="q" type="text" placeholder="Search" value="<?=html_escape($q);?>">
+        <button type="submit" class="btn btn-primary" type="button">Search</button>
+	</form>
         </div>
         <div class="table-section">
             <table>
