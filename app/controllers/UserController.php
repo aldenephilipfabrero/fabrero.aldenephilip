@@ -102,7 +102,7 @@ class UserController extends Controller {
             echo 'Error saving adventurer!';
         }
     } else {
-        $this->call->view('create');
+        $this->call->view('Create');
     }     
         
         }
