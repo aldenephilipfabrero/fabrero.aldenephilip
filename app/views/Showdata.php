@@ -29,6 +29,7 @@
                     <th>Lastname</th>
                     <th>Firstname</th>
                     <th>Email</th>
+                    <th>Image</th>
                     <th>Action</th>
                 </tr>
                 <?php foreach(html_escape($all) as $student): ?>
@@ -37,6 +38,13 @@
                     <td><?=$student['last_name'];?></td>
                     <td><?=$student['first_name'];?></td>
                     <td><?=$student['email'];?></td>
+                    <td>
+                        <?php if (!empty($student['image'])): ?>
+                            <img src="<?=base_url();?>public/images/<?=html_escape($student['image']);?>" alt="User Image" style="max-width:60px;max-height:60px;">
+                        <?php else: ?>
+                            No Image
+                        <?php endif; ?>
+                    </td>
                     <td>
                         <a href="<?=site_url('user/update/'.$student['id']);?>">Update</a>
                         <a href="<?=site_url('user/delete/'.$student['id']);?>">Delete</a>

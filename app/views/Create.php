@@ -17,6 +17,9 @@
         
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email"><br>
+
+        label for="image">Upload File</label><br>
+    <input type="file" name="image" size="20" required />
         
 
         
