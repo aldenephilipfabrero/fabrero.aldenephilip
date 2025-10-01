@@ -72,8 +72,8 @@ class UserController extends Controller {
                     ->encrypt_name();
                 
                 if ($this->upload->do_upload()) {
-                    $Weapon = $this->upload->get_filename();
-                    $WeaponName = $original_name; 
+                    $image = $this->upload->get_filename();
+               
                 } else {
                     echo "Upload Error: ";
                     print_r($this->upload->get_errors());
