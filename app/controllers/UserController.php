@@ -97,14 +97,14 @@ class UserController extends Controller {
                 echo "Error: Invalid file upload structure!";
                 // Debug: Print _FILES info
                 echo "\nDebug: _FILES: ";
-                print_r($_FILES['image']);
+                print_r(isset($_FILES['image']) ? $_FILES['image'] : $_FILES);
                 exit;
             }
         } else {
             echo "Error: image is required!";
             // Debug: Print _FILES info
             echo "\nDebug: _FILES: ";
-            print_r($_FILES['image']);
+            print_r(isset($_FILES['image']) ? $_FILES['image'] : $_FILES);
             exit;
         }
 
