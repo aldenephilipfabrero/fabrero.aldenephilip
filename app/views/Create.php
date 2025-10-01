@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Input Data</h1>
-        <form action="<?=site_url('user/create');?>" method="post" enctype="multipart/form-data">
+    <form action="<?=site_url('user/create');?>" method="post">
         <label for="last_name">Last Name:</label><br>
         <input type="text" id="last_name" name="last_name"><br>
         

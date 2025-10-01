@@ -51,60 +51,40 @@ class UserController extends Controller {
 
     public function create()
     {
-        if($this->io->method() == 'post')
-        {
-            $last_name = $this->io->post('last_name');
-            $first_name = $this->io->post('first_name');
-            $email = $this->io->post('email');
-    
-            $data = array(
-                'last_name' => $last_name,
-                'first_name' => $first_name,
-                'email' => $email,
-                'image' => null);
+        if ($this->io->method() == 'post') {
+        $first_name  = $this->io->post('first_name');
+        $last_name = $this->io->post('last_name');
+        $email = $this->io->post('email');
+        $image = null;
        
         if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
             if (isset($_FILES['image']['tmp_name']) && isset($_FILES['image']['name']) && isset($_FILES['image']['size'])) {
                 $original_name = pathinfo($_FILES['image']['name'], PATHINFO_FILENAME);
-                // Debug: Check if directory exists and is writable
-                $upload_dir = 'public/images';
-                if (!is_dir($upload_dir)) {
-                    echo "Debug: Upload directory does not exist: $upload_dir\n";
-                } elseif (!is_writable($upload_dir)) {
-                    echo "Debug: Upload directory is not writable: $upload_dir\n";
-                }
+                
                 $this->call->library('upload', $_FILES['image']);
                 $this->upload
                     ->max_size(5)
                     ->min_size(0.01) 
-                    ->set_dir($upload_dir)
+                    ->set_dir('public/images')
                     ->allowed_extensions(['jpg','jpeg','png','gif'])
                     ->allowed_mimes(['image/jpeg','image/png','image/gif'])
                     ->is_image()
                     ->encrypt_name();
                 
                 if ($this->upload->do_upload()) {
-                    $image = $this->upload->get_filename();
+                    $Weapon = $this->upload->get_filename();
+                    $WeaponName = $original_name; 
                 } else {
                     echo "Upload Error: ";
                     print_r($this->upload->get_errors());
-                    // Debug: Print _FILES info
-                    echo "\nDebug: _FILES: ";
-                    print_r($_FILES['image']);
                     exit; 
                 }
             } else {
                 echo "Error: Invalid file upload structure!";
-                // Debug: Print _FILES info
-                echo "\nDebug: _FILES: ";
-                print_r(isset($_FILES['image']) ? $_FILES['image'] : $_FILES);
                 exit;
             }
         } else {
-            echo "Error: image is required!";
-            // Debug: Print _FILES info
-            echo "\nDebug: _FILES: ";
-            print_r(isset($_FILES['image']) ? $_FILES['image'] : $_FILES);
+            echo "Error:image is required!";
             exit;
         }
 
@@ -113,6 +93,7 @@ class UserController extends Controller {
             'last_name'  => $last_name,
             'email'  => $email,
             'image' => $image,
+           
         ];
 
         if ($this->UserModel->insert($data)) {
@@ -121,9 +102,8 @@ class UserController extends Controller {
             echo 'Error saving adventurer!';
         }
     } else {
-        $this->call->view('Create');
-    }
-            
+        $this->call->view('create');
+    }     
         
         }
     
