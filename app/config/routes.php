@@ -51,8 +51,3 @@ $router->match('/user/update/{id}', 'UserController::update', ['GET', 'POST']);
 $router->get('/user/delete/{id}', 'UserController::delete');
 $router->get('user/soft-delete/{id}', 'UserController::soft_delete');
 $router->get('/user/restore/{id}', 'UserController::restore');
-
-// Authentication
-$router->match('/auth/login', 'AuthController::login', ['GET','POST']);
-$router->match('/auth/register', 'AuthController::register', ['GET','POST']);
-$router->get('/auth/logout', 'AuthController::logout');

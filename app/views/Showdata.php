@@ -10,14 +10,7 @@
     <div class="main-container">
         <h1>Welcome to My Data</h1>
         <div class="button-container">
-            <?php if($this->session->has_userdata('logged_in')): ?>
-                <a href="<?=site_url('user/create');?>" class="create-btn">Create Record</a>
-                <a href="<?=site_url('auth/logout');?>" class="create-btn">Logout</a>
-                <span>Welcome, <?=html_escape($this->session->userdata('first_name'));?></span>
-            <?php else: ?>
-                <a href="<?=site_url('auth/login');?>" class="create-btn">Login</a>
-                <a href="<?=site_url('auth/register');?>" class="create-btn">Register</a>
-            <?php endif; ?>
+            <a href="<?=site_url('user/create');?>" class="create-btn">Create Record</a>
              <form action="<?=site_url('/');?>" method="get" class="col-sm-4 float-end d-flex">
 		<?php
 		$q = '';
