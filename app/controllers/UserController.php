@@ -51,6 +51,11 @@ class UserController extends Controller {
 
     public function create()
     {
+        // require login to create
+        if (! $this->session->has_userdata('logged_in')) {
+            redirect('/auth/login');
+        }
+
         if ($this->io->method() == 'post') {
         $first_name  = $this->io->post('first_name');
         $last_name = $this->io->post('last_name');
@@ -109,7 +114,12 @@ class UserController extends Controller {
     
         public function update($id)
         {
-            $data ['student'] = $this->UserModel->find($id);
+                // require login to update
+                if (! $this->session->has_userdata('logged_in')) {
+                    redirect('/auth/login');
+                }
+
+                $data ['student'] = $this->UserModel->find($id);
             if($this->io->method() == 'post')
             {
                 $last_name = $this->io->post('last_name');
@@ -134,6 +144,11 @@ class UserController extends Controller {
 
         public function delete($id)
         {
+            // only admin can delete permanently
+            if (! $this->session->has_userdata('logged_in') || $this->session->userdata('role') !== 'admin') {
+                echo 'Unauthorized';
+                return;
+            }
             if($this->UserModel->delete($id))
             {
                 redirect('/');
@@ -144,6 +159,10 @@ class UserController extends Controller {
 
         public function soft_delete($id)
         {
+            // require login
+            if (! $this->session->has_userdata('logged_in')) {
+                redirect('/auth/login');
+            }
             if($this->UserModel->soft_delete($id))
             {
                 redirect('/');
@@ -154,6 +173,11 @@ class UserController extends Controller {
 
         public function restore($id)
         {
+            // only admin can restore
+            if (! $this->session->has_userdata('logged_in') || $this->session->userdata('role') !== 'admin') {
+                echo 'Unauthorized';
+                return;
+            }
             if($this->UserModel->restore($id))
             {
                 redirect('/');
