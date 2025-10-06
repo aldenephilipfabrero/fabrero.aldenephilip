@@ -99,7 +99,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     <img src="https://cdn-icons-png.flaticon.com/512/2942/2942077.png" alt="Building Logo" class="logo">
     <h1 class="text-2xl font-bold text-blue-400 mb-6 tracking-wide">Create Account</h1>
 
-    <form method="post" class="space-y-4 text-left">
+  <form action="<?= site_url('auth/register') ?>" method="post" class="space-y-4 text-left">
       <!-- Username -->
       <div>
         <label class="block text-sm font-semibold text-gray-400 mb-1">Username</label>
