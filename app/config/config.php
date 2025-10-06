@@ -79,7 +79,7 @@ $config['ENVIRONMENT']             = 'development';
 | WARNING: You MUST set this value!
 |
 */
-$config['base_url'] 				= 'https://fabrero-aldenephilip.onrender.com/';
+$config['base_url'] 				= '';
 
 /*
 |--------------------------------------------------------------------------

@@ -16,13 +16,28 @@ class auth
 
     public function register($username, $password, $role = 'user')
     {
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-        return $this->db->table('users')->insert([
-            'username' => $username,
-            'password' => $hash,
-            'role'     => $role,
-            'created_at' => date('Y-m-d H:i:s')
-        ]);
+        try {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $res = $this->db->table('users')->insert([
+                'username' => $username,
+                'password' => $hash,
+                'role'     => $role,
+                'created_at' => date('Y-m-d H:i:s')
+            ]);
+            return $res;
+        } catch (Exception $e) {
+            // store last error message for retrieval
+            $this->last_error = $e->getMessage();
+            return false;
+        }
+    }
+
+    /**
+     * Return last DB/registration error if any
+     */
+    public function get_last_error()
+    {
+        return $this->last_error ?? null;
     }
 
     public function login($username, $password)

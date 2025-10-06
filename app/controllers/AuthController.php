@@ -6,6 +6,7 @@ class AuthController extends Controller
     {
         $this->call->library('auth');
 
+        $data = [];
         if ($this->io->method() == 'post') {
             $username = $this->io->post('username');
             $password = $this->io->post('password');
@@ -13,6 +14,8 @@ class AuthController extends Controller
 
             if ($this->auth->register($username, $password, $role)) {
                 redirect('/students');
+            } else {
+                $data['error'] = $this->auth->get_last_error() ?? 'Registration failed';
             }
         }
 
@@ -27,7 +30,7 @@ class AuthController extends Controller
             @file_put_contents($viewFile, $default);
         }
 
-        $this->call->view('auth/register');
+    $this->call->view('auth/register', $data);
     }
 
     public function login()
