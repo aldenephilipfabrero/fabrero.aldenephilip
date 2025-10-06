@@ -6,22 +6,39 @@
   <title>Create Student</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
+    /* 🎨 CSS Variables (THEME CONFIGURATION: Black, Orange, White) */
     :root {
-      --bg: linear-gradient(135deg, #1a032d 0%, #3d0c5d 50%, #5b1d82 100%);
-      --card-bg: rgba(255, 255, 255, 0.06);
-      --primary: #c084fc;
-      --primary-hover: #a855f7;
-      --border: rgba(192, 132, 252, 0.5);
-      --text: #f3e8ff;
-      --muted: #a78bfa;
-      --radius: 10px;
-      --input-bg: rgba(255, 255, 255, 0.08);
-      --input-focus: rgba(255, 255, 255, 0.15);
-      --shadow: 0 3px 24px 0 rgba(192, 132, 252, 0.25);
-      --shadow-lg: 0 6px 28px 0 rgba(192, 132, 252, 0.35);
+      /* Background: Deep Black with a subtle dark gradient */
+      --bg: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+
+      /* Card/Element Backgrounds: Slightly opaque dark gray */
+      --card-bg: rgba(26, 26, 26, 0.7); 
+
+      /* Primary Accent Color: Vibrant Orange */
+      --primary: #ff8c00;
+      --primary-hover: #ff6600;
+
+      /* Border/Focus Color: Soft Orange for subtle glow */
+      --border: rgba(255, 140, 0, 0.4);
+
+      /* Text Colors: Off-White for high contrast */
+      --text: #eeeeee;
+      --muted: #cccccc; /* Slightly darker white for hints/links */
+
+      /* Design Constants */
+      --radius: 8px; /* Slightly tighter radius */
+      --input-bg: rgba(255, 255, 255, 0.05); /* Very dark input background */
+      --input-focus: rgba(255, 140, 0, 0.1); /* Light orange focus background */
+      --shadow: 0 3px 18px 0 rgba(255, 140, 0, 0.15); /* Soft Orange shadow */
+      --shadow-lg: 0 6px 24px 0 rgba(255, 140, 0, 0.3); /* Stronger Orange shadow */
+      
       font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
     }
 
+    /* ---------------------------------------------------- */
+    /* All other styles now automatically use the new variables */
+    /* ---------------------------------------------------- */
+    
     body {
       margin: 0;
       background: var(--bg);
@@ -56,7 +73,7 @@
       margin: 0;
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--primary); /* Orange Header */
     }
 
     form {
@@ -80,7 +97,7 @@
     .input-icon i {
       position: absolute;
       left: 14px;
-      color: var(--primary);
+      color: var(--primary); /* Orange Icon */
       font-size: 1em;
     }
 
@@ -96,19 +113,21 @@
 
     input:focus {
       outline: none;
-      border-color: var(--primary);
+      border-color: var(--primary); /* Orange Focus Border */
       background: var(--input-focus);
       box-shadow: var(--shadow-lg);
     }
 
+    /* Button Styles (Updated for Orange) */
     button {
-      background: linear-gradient(90deg, #9333ea, #a855f7, #c084fc);
-      color: #fff;
-      padding: 12px 18px 12px 40px;
+      /* Solid Orange Background for high contrast */
+      background: var(--primary); 
+      color: #0d0d0d; /* Black text on orange button */
+      padding: 12px 18px; /* Adjusted padding as the icon position has been moved */
       border: none;
       border-radius: var(--radius);
       font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       box-shadow: var(--shadow);
       display: flex;
@@ -120,16 +139,17 @@
       max-width: 320px;
     }
 
+    /* Icon inside button (Adjusted for orange theme) */
     button i {
-      position: absolute;
-      left: 16px;
+      position: relative; /* Changed from absolute to flow with text */
+      left: 0;
       font-size: 1em;
-      color: #f3e8ff;
+      color: #0d0d0d; /* Black icon on orange button */
     }
 
     button:hover {
       transform: translateY(-2px);
-      background: var(--primary-hover);
+      background: var(--primary-hover); /* Darker Orange */
       box-shadow: var(--shadow-lg);
     }
 
@@ -143,7 +163,7 @@
     }
 
     .back-link:hover {
-      color: var(--primary);
+      color: var(--primary); /* Orange on hover */
       text-decoration: underline;
     }
 
@@ -155,7 +175,7 @@
         font-size: 1.5rem;
       }
     }
-  </style>
+</style>
 </head>
 <body>
   <div class="container">

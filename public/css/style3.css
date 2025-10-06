@@ -1,79 +1,108 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #f0f4f8;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* para vertical center */
-}
+      font-family: Arial, sans-serif;
+      /* Background: Dark Gray/Black */
+      background: #1a1a1a; 
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* Text Color: Off-White (default for the body) */
+      color: #eeeeee; 
+    }
 
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
+    /* Heading */
+    h1 {
+      text-align: center;
+      /* Orange Heading Color */
+      color: #ff8c00; 
+      margin-bottom: 20px;
+    }
 
-.container {
-    width: 400px;
-    background: #fff;
-    padding: 25px;
-    border-radius: 15px; /* mas rounded */
-    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
-}
+    /* Card Container */
+    .container {
+      width: 400px;
+      /* Card Background: Very Dark Gray */
+      background: #252525; 
+      padding: 25px;
+      border-radius: 15px; 
+      /* Subtle Orange Shadow */
+      box-shadow: 0px 4px 15px rgba(255, 140, 0, 0.2); 
+      /* Orange Border for a defined edge */
+      border: 1px solid #ff8c00;
+    }
 
+    /* Form Labels */
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      /* White Label Color for contrast */
+      color: #eeeeee; 
+    }
 
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #444;
-        }
+    /* Form Inputs (Text, Email) */
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      /* Light Orange Border */
+      border: 1px solid rgba(255, 140, 0, 0.5); 
+      border-radius: 5px;
+      transition: border 0.3s;
+      /* Input Background: Slightly Lighter Dark Gray */
+      background: #333333; 
+      color: #eeeeee; /* White text input */
+    }
 
-        input[type="text"],
-        input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 6px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: border 0.3s;
-        }
+    /* Input Focus */
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      /* Stronger Orange Focus Border */
+      border-color: #ff8c00; 
+      outline: none;
+      box-shadow: 0 0 5px rgba(255, 140, 0, 0.7);
+    }
 
-        input[type="text"]:focus,
-        input[type="email"]:focus {
-            border-color: #8943fa;
-            outline: none;
-        }
+    /* Submit Button */
+    input[type="submit"] {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      /* Solid Orange Background */
+      background: #ff8c00; 
+      border: none;
+      border-radius: 5px;
+      color: #1a1a1a; /* Dark Text on Orange */
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
 
-        input[type="submit"] {
-            width: 100%;
-            margin-top: 20px;
-            padding: 12px;
-            background:  #9d60ff;
-            border: none;
-            border-radius: 5px;
-            color: #181111;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+    /* Submit Button Hover */
+    input[type="submit"]:hover {
+      /* Darker Orange Hover */
+      background: #ff6600; 
+      transform: translateY(-1px);
+    }
 
-        input[type="submit"]:hover {
-            background: #8943fa;
-        }
+    /* Back Link */
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      /* Orange Link Color */
+      color: #ff8c00; 
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
 
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-            color: #007bff;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
+    .back-link:hover {
+      /* Darker Orange Hover */
+      color: #ff6600;
+      text-decoration: underline;
+    }

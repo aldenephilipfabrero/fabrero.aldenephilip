@@ -21,25 +21,38 @@ $role = $_SESSION['role'] ?? null;
   <title>Students List</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <style>
+ <style>
+    /* 🎨 THEME COLORS */
+    :root {
+        --primary-orange: #ff8c00;
+        --secondary-orange: #ff6600;
+        --dark-bg: #0d0d0d;
+        --dark-card: rgba(26, 26, 26, 0.75);
+        --white-text: #eeeeee;
+        --black-text: #0d0d0d;
+    }
+
+    /* BODY & BACKGROUND */
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #1a0b1f 0%, #3a0d3e 40%, #5b1f69 70%, #7a3e8a 100%);
+      /* Dark Background Gradient */
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a1a 40%, #252525 70%, #333333 100%);
       margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
       min-height: 100vh;
-      color: #fff;
+      color: var(--white-text);
       transition: all 0.4s ease;
     }
 
     .container {
       max-width: 1100px;
       margin: 40px auto;
-      background: rgba(255, 255, 255, 0.08);
+      /* Dark Translucent Card */
+      background: var(--dark-card); 
       border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.7); /* Darker Shadow */
       padding: 32px;
       backdrop-filter: blur(10px);
       transition: all 0.4s ease;
@@ -56,10 +69,11 @@ $role = $_SESSION['role'] ?? null;
       margin: 0;
       font-size: 2.2rem;
       font-weight: 700;
-      color: #fff;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      color: var(--primary-orange); /* Orange Heading */
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
     }
 
+    /* BUTTON BASE STYLES */
     .btn {
       display: inline-block;
       padding: 8px 18px;
@@ -72,36 +86,47 @@ $role = $_SESSION['role'] ?? null;
       text-decoration: none;
     }
 
+    /* BUTTON: SUCCESS (Primary Action) */
     .btn-success {
-      background: linear-gradient(90deg, #7a3e8a 0%, #9c4dcc 100%);
-      color: #fff;
+      background: linear-gradient(90deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+      color: var(--black-text); /* Black text on Orange button */
     }
 
     .btn-success:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 14px rgba(156,77,204,0.5);
+      /* Orange Hover Shadow */
+      box-shadow: 0 4px 14px rgba(255, 140, 0, 0.7); 
     }
 
+    /* BUTTON: WARNING (Secondary Action) */
     .btn-warning {
-      background: linear-gradient(90deg, #b06ab3 0%, #ec9f05 100%);
-      color: #222;
+      background: linear-gradient(90deg, #fbb03b 0%, #ffc107 100%); /* Yellowish-Orange Warning */
+      color: var(--black-text);
+    }
+    
+    .btn-warning:hover {
+       transform: scale(1.05);
+       box-shadow: 0 4px 10px rgba(255, 193, 7, 0.5);
     }
 
+    /* BUTTON: DANGER (Destructive Action) */
     .btn-danger {
-      background: linear-gradient(90deg, #d4145a 0%, #fbb03b 100%);
-      color: #fff;
+      background: linear-gradient(90deg, #dc3545 0%, #f44336 100%); /* Red */
+      color: var(--white-text);
     }
 
     .btn-danger:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(244, 67, 54, 0.5);
+      box-shadow: 0 4px 10px rgba(220, 53, 69, 0.5);
     }
 
+    /* BUTTON: PRIMARY (Fallback/Info) */
     .btn-primary {
-      background: linear-gradient(90deg, #673ab7 0%, #9c27b0 100%);
-      color: #fff;
+      background: linear-gradient(90deg, #495057 0%, #6c757d 100%); /* Gray/Black */
+      color: var(--white-text);
     }
 
+    /* SEARCH INPUTS */
     .search-form {
       display: flex;
       gap: 10px;
@@ -111,13 +136,21 @@ $role = $_SESSION['role'] ?? null;
     .search-form input {
       padding: 10px 14px;
       border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.4);
+      /* Orange border on input */
+      border: 1px solid rgba(255, 140, 0, 0.4); 
       font-size: 1rem;
       flex: 1;
-      background: rgba(255,255,255,0.15);
-      color: #fff;
+      background: rgba(255,255,255,0.08);
+      color: var(--white-text);
     }
 
+    .search-form input:focus {
+        border-color: var(--primary-orange);
+        box-shadow: 0 0 5px var(--primary-orange);
+        outline: none;
+    }
+
+    /* TABLE STYLES */
     .card {
       overflow-x: auto;
       border-radius: 10px;
@@ -128,7 +161,7 @@ $role = $_SESSION['role'] ?? null;
     table {
       width: 100%;
       border-collapse: collapse;
-      color: #fff;
+      color: var(--white-text);
     }
 
     th, td {
@@ -138,13 +171,13 @@ $role = $_SESSION['role'] ?? null;
     }
 
     th {
-      background: rgba(0,0,0,0.3);
+      background: rgba(255, 140, 0, 0.2); /* Light Orange Header Background */
       font-weight: 700;
       text-transform: uppercase;
     }
 
     tr:hover td {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 140, 0, 0.05); /* Very light orange tint on hover */
     }
 
     .actions {
@@ -152,6 +185,7 @@ $role = $_SESSION['role'] ?? null;
       gap: 8px;
     }
 
+    /* PAGINATION */
     .pagination-container {
       margin-top: 24px;
       display: flex;
@@ -177,41 +211,34 @@ $role = $_SESSION['role'] ?? null;
       font-size: 0.95rem;
       font-weight: 600;
       text-decoration: none;
-      background: rgba(255,255,255,0.15);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.1);
+      color: var(--white-text);
+      border: 1px solid rgba(255, 140, 0, 0.2); /* Orange border */
       transition: all 0.3s ease;
     }
 
+    /* Active/Hover Page */
+    .pagination-container strong,
     .pagination-container a:hover {
-      background: linear-gradient(90deg, #5b1f69 0%, #7a3e8a 100%);
-      color: #fff;
+      background: linear-gradient(90deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+      color: var(--black-text);
       transform: scale(1.05);
+      border-color: var(--primary-orange);
     }
 
-    /* ✅ Logout center */
+    /* LOGOUT */
     .logout-container {
       display: flex;
       justify-content: center;
       margin-top: 30px;
     }
 
-    /* ✅ Dark mode styles */
-    body.dark {
-      background: linear-gradient(135deg, #0c0212 0%, #1d0723 40%, #3a0d3e 70%, #4b1b63 100%);
-      color: #ddd;
-    }
-
-    body.dark .container {
-      background: rgba(0, 0, 0, 0.5);
-      box-shadow: 0 8px 24px rgba(255,255,255,0.05);
-    }
-
+    /* DARK MODE TOGGLE (Color stays white/orange for contrast) */
     .dark-toggle {
       background: transparent;
       border: none;
       font-size: 1.4rem;
-      color: #fff;
+      color: var(--primary-orange); /* Orange toggle icon */
       cursor: pointer;
       transition: transform 0.3s ease;
     }
@@ -219,8 +246,18 @@ $role = $_SESSION['role'] ?? null;
     .dark-toggle:hover {
       transform: scale(1.2);
     }
+    
+    /* DARK MODE BODY STYLES (Adjustments for dark mode class) */
+    body.dark {
+      background: linear-gradient(135deg, #0a0a0a 0%, #111111 40%, #1c1c1c 70%, #292929 100%);
+      color: #ddd;
+    }
 
-  </style>
+    body.dark .container {
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 8px 24px rgba(255,255,255,0.05);
+    }
+ </style>
 </head>
 
 <body>

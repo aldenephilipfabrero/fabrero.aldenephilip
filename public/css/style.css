@@ -1,239 +1,209 @@
+ body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      /* Background: Dark Gray/Black */
+      background: #1a1a1a; 
+      margin: 0;
+      padding: 0;
+      /* Text Color: Off-White */
+      color: #eeeeee; 
+    }
 
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #faf7ff;
-    margin: 0;
-    padding: 0;
-    color: #6d28d9;
-}
+    /* Container/Card Styles */
+    .container, .form-container, .white-container, .container.create-small {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 32px 24px;
+      /* Card Background: Very Dark Gray */
+      background: #252525; 
+      border-radius: 18px;
+      /* Subtle Orange Shadow */
+      box-shadow: 0 4px 18px 0 rgba(255, 140, 0, 0.2); 
+      /* Orange Border */
+      border: 1.5px solid #ff8c00; 
+      color: #eeeeee; /* Off-White Text */
+    }
 
-.create-center {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-}
+    .create-center {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
 
-.container.create-small {
-    max-width: 340px;
-    width: 100%;
-    margin: 0 auto;
-    background: #fff;
-    padding: 32px 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(109,40,217,0.10);
-    border: 1.5px solid #a78bfa;
-    color: #6d28d9;
-}
+    .container.create-small {
+      max-width: 340px;
+      width: 100%;
+      margin: 0 auto;
+    }
 
-form label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-    color: #6d28d9;
-}
+    /* Headings */
+    h1 {
+      text-align: center;
+      /* Orange Heading Color */
+      color: #ff8c00; 
+      font-weight: 600;
+      margin-bottom: 32px;
+      letter-spacing: 1px;
+    }
 
-form input[type="text"],
-form input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    border: 1px solid #a78bfa;
-    border-radius: 5px;
-    transition: border 0.3s;
-    color: #6d28d9;
-    background: #faf7ff;
-}
+    /* Form Labels */
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+      /* Orange Label Color */
+      color: #ff8c00; 
+      font-size: 1rem;
+    }
 
-form input[type="text"]:focus,
-form input[type="email"]:focus {
-    border-color: #8943fa;
-    outline: none;
-}
+    /* Form Inputs (Text, Email, Password, Select, Textarea) */
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"],
+    form select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      /* Orange Border */
+      border: 1.5px solid #ff8c00; 
+      border-radius: 6px;
+      font-size: 1rem;
+      color: #eeeeee; /* White Text */
+      /* Input Background: Darker Gray */
+      background: #333333; 
+      transition: border 0.3s;
+      box-sizing: border-box;
+    }
 
-form input[type="submit"] {
-    width: 100%;
-    margin-top: 20px;
-    padding: 12px;
-    background: #8943fa;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-}
+    form input[type="text"]:focus,
+    form input[type="email"]:focus,
+    form input[type="password"]:focus,
+    form select:focus,
+    textarea:focus {
+      /* Stronger Orange Focus Border */
+      border-color: #ff6600; 
+      outline: none;
+      box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+    }
 
-form input[type="submit"]:hover {
-    background: #6d28d9;
-}
+    /* Submit Button */
+    form input[type="submit"],
+    form button[type="submit"] {
+      width: 100%;
+      margin-top: 28px;
+      padding: 12px;
+      /* Solid Orange Background */
+      background: #ff8c00; 
+      border: none;
+      border-radius: 6px;
+      color: #1a1a1a; /* Dark Text on Orange */
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      letter-spacing: 0.5px;
+    }
 
+    form input[type="submit"]:hover,
+    form button[type="submit"]:hover {
+      /* Darker Orange Hover */
+      background: #ff6600; 
+      color: #1a1a1a;
+    }
 
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: transparent;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
 
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #faf7ff;
-    margin: 0;
-    padding: 0;
-    color: #6d28d9;
-}
+    th, td {
+      padding: 14px 10px;
+      text-align: center;
+    }
 
-.container, .form-container, .white-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 32px 24px;
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 2px 24px 0 rgba(109,40,217,0.10);
-    border: 1.5px solid #a78bfa;
-    color: #6d28d9;
-}
+    th {
+      /* Orange Table Header */
+      background: #ff8c00; 
+      color: #1a1a1a; /* Dark Text on Orange */
+      font-weight: 600;
+      border: none;
+    }
 
+    tr {
+      /* Dark Row Background */
+      background: #333333; 
+      border-bottom: 1px solid #4a4a4a;
+      transition: background 0.2s;
+      color: #eeeeee;
+    }
 
-form label {
-    display: block;
-    margin-top: 16px;
-    font-weight: 500;
-    color: #6d28d9;
-    font-size: 1rem;
-}
+    tr:nth-child(even) {
+      /* Slightly different dark shade for zebra striping */
+      background: #2d2d2d; 
+    }
 
-form input[type="text"],
-form input[type="email"],
-form input[type="password"],
-form select, textarea {
-    width: 100%;
-    padding: 10px 12px;
-    margin-top: 6px;
-    border: 1.5px solid #a78bfa;
-    border-radius: 6px;
-    font-size: 1rem;
-    color: #6d28d9;
-    background: #faf7ff;
-    transition: border 0.3s;
-    box-sizing: border-box;
-}
+    tr:hover {
+      /* Light Orange tint on hover */
+      background: rgba(255, 140, 0, 0.1); 
+    }
 
-form input[type="text"]:focus,
-form input[type="email"]:focus,
-form input[type="password"]:focus,
-form select:focus,
-textarea:focus {
-    border-color: #6d28d9;
-    outline: none;
-}
+    /* Action Buttons */
+    .btn {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 18px;
+      border-radius: 6px;
+      margin: 0 2px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      border: none;
+      outline: none;
+    }
 
-form input[type="submit"],
-form button[type="submit"] {
-    width: 100%;
-    margin-top: 28px;
-    padding: 12px;
-    background: #6d28d9;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    letter-spacing: 0.5px;
-}
+    .btn.update {
+      /* Light Button with Orange Border */
+      background: #4a4a4a; 
+      color: #ff8c00;
+      border: 1.5px solid #ff8c00;
+    }
+    .btn.update:hover {
+      /* Solid Orange Hover */
+      background: #ff8c00; 
+      color: #1a1a1a;
+    }
 
-form input[type="submit"]:hover,
-form button[type="submit"]:hover {
-    background: #a78bfa;
-    color: #6d28d9;
-}
+    .btn.delete {
+      /* Dark Button with Red Accent */
+      background: #dc3545; 
+      color: #eeeeee;
+      border: 1.5px solid #dc3545;
+    }
+    .btn.delete:hover {
+      /* Lighter Red on Hover */
+      background: #c82333; 
+      color: #eeeeee;
+    }
 
-h1 {
-    text-align: center;
-    color: #6d28d9;
-    font-weight: 600;
-    margin-bottom: 32px;
-    letter-spacing: 1px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: transparent;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 32px;
-}
-
-th, td {
-    padding: 14px 10px;
-    text-align: center;
-}
-
-th {
-    background: #815af8;
-    color: #fff;
-    font-weight: 500;
-    border: none;
-}
-
-tr {
-    background: #faf7ff;
-    border-bottom: 1px solid #e9d8fd;
-    transition: background 0.2s;
-}
-
-tr:nth-child(even) {
-    background: #f3e8ff;
-}
-
-tr:hover {
-    background: #e9d5ff;
-}
-
-.btn {
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 7px 18px;
-    border-radius: 6px;
-    margin: 0 2px;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-    border: none;
-    outline: none;
-}
-
-.btn.update {
-    background: #fff;
-    color: #0d0d0d;
-    border: 1.5px solid #a78bfa;
-}
-.btn.update:hover {
-    background: #6d28d9;
-    color: #ffffff;
-}
-
-.btn.delete {
-    background: #fff;
-    color: #6d28d9;
-    border: 1.5px solid #a78bfa;
-}
-.btn.delete:hover {
-    background: #a78bfa;
-    color: #0d0d0d;
-}
-
-.btn.create {
-    background: #6d28d9;
-    color: #fff;
-    font-weight: 600;
-    margin: 0 auto;
-    display: block;
-    width: max-content;
-    margin-top: 24px;
-    box-shadow: 0 1px 6px 0 rgba(167,139,250,0.08);
-}
-.btn.create:hover {
-    background: #7828f9;
-    color: #f9f9fa;
-}
+    .btn.create {
+      /* Orange Create Button */
+      background: #ff8c00; 
+      color: #1a1a1a;
+      font-weight: 600;
+      margin: 0 auto;
+      display: block;
+      width: max-content;
+      margin-top: 24px;
+      box-shadow: 0 1px 6px 0 rgba(255, 140, 0, 0.4);
+    }
+    .btn.create:hover {
+      /* Darker Orange Hover */
+      background: #ff6600; 
+      color: #1a1a1a;
+    }

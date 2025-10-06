@@ -11,23 +11,40 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        :root {
-        --bg: linear-gradient(135deg, #1a032d 0%, #3d0c5d 50%, #5b1d82 100%);
-        --card-bg: rgba(255, 255, 255, 0.06);
-        --primary: #c084fc;
-        --primary-hover: #a855f7;
-        --border: rgba(192, 132, 252, 0.5);
-        --text: #f3e8ff;
-        --muted: #a78bfa;
-        --radius: 10px;
-        --input-bg: rgba(255, 255, 255, 0.08);
-        --input-focus: rgba(255, 255, 255, 0.15);
-        --shadow: 0 3px 24px 0 rgba(192, 132, 252, 0.25);
-        --shadow-lg: 0 6px 28px 0 rgba(192, 132, 252, 0.35);
-        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-        }
+    /* 🎨 CSS Variables (THEME CONFIGURATION: Black, Orange, White) */
+    :root {
+        /* Background: Deep Black with a subtle dark gradient */
+        --bg: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
 
-        body {
+        /* Card/Element Backgrounds: Slightly opaque dark gray */
+        --card-bg: rgba(26, 26, 26, 0.7); 
+
+        /* Primary Accent Color: Vibrant Orange */
+        --primary: #ff8c00;
+        --primary-hover: #ff6600;
+
+        /* Border/Focus Color: Soft Orange for subtle glow */
+        --border: rgba(255, 140, 0, 0.4);
+
+        /* Text Colors: Off-White for high contrast */
+        --text: #eeeeee;
+        --muted: #cccccc; /* Slightly darker white for hints */
+
+        /* Design Constants */
+        --radius: 8px; /* Slightly tighter radius */
+        --input-bg: rgba(255, 255, 255, 0.05); /* Very dark input background */
+        --input-focus: rgba(255, 140, 0, 0.1); /* Light orange focus background */
+        --shadow: 0 3px 18px 0 rgba(255, 140, 0, 0.15); /* Soft Orange shadow */
+        --shadow-lg: 0 6px 24px 0 rgba(255, 140, 0, 0.3); /* Stronger Orange shadow */
+        
+        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    /* ---------------------------------------------------- */
+    /* All other styles now automatically use the new variables */
+    /* ---------------------------------------------------- */
+
+    body {
         margin: 0;
         background: var(--bg);
         display: flex;
@@ -35,15 +52,15 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         justify-content: center;
         min-height: 100vh;
         color: var(--text);
-        }
+    }
 
-        .container {
+    .container {
         width: 100%;
         max-width: 420px;
         padding: 16px;
-        }
+    }
 
-        .card {
+    .card {
         background: var(--card-bg);
         border: 1.5px solid var(--border);
         border-radius: var(--radius);
@@ -55,30 +72,30 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         gap: 20px;
         width: 100%;
         max-width: 400px;
-        }
+    }
 
-        form {
+    form {
         display: flex;
         flex-direction: column;
         gap: 16px;
         width: 100%;
-        }
+    }
 
-        .input-icon {
+    .input-icon {
         position: relative;
         display: flex;
         align-items: center;
         width: 100%;
-        }
+    }
 
-        .input-icon i {
+    .input-icon i {
         position: absolute;
         left: 12px;
         font-size: 1em;
         color: var(--primary);
-        }
+    }
 
-        input {
+    input {
         width: 100%;
         padding: 12px 16px 12px 40px; /* padding for icon */
         border-radius: var(--radius);
@@ -87,17 +104,17 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         color: var(--text);
         font-size: 0.95rem;
         box-sizing: border-box;
-        }
+    }
 
-        input:focus {
+    input:focus {
         outline: none;
         border-color: var(--primary);
         background: var(--input-focus);
         box-shadow: var(--shadow-lg);
-        }
+    }
 
-        /* Dropdown styling with custom arrow */
-        .role-select {
+    /* Dropdown styling with custom arrow */
+    .role-select {
         width: 100%;
         padding: 12px 40px 12px 16px; /* space for arrow on right */
         border-radius: var(--radius);
@@ -111,21 +128,21 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         appearance: none;
         cursor: pointer;
         position: relative;
-        }
+    }
 
-        .role-select:focus {
+    .role-select:focus {
         outline: none;
         border-color: var(--primary);
         background: var(--input-focus);
         box-shadow: var(--shadow-lg);
-        }
+    }
 
-        /* Custom arrow only for dropdown */
-        .role-select-wrapper {
+    /* Custom arrow only for dropdown */
+    .role-select-wrapper {
         position: relative;
-        }
+    }
 
-        .role-select-wrapper::after {
+    .role-select-wrapper::after {
         content: '\f078'; /* FontAwesome chevron-down */
         font-family: 'Font Awesome 6 Free';
         font-weight: 900;
@@ -135,14 +152,16 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         transform: translateY(-50%);
         pointer-events: none;
         color: var(--primary);
-        }
+    }
 
-        .role-select option {
-        background-color: #3d0c5d; /* dark purple for options */
+    .role-select option {
+        /* Options inherit dark background from the select box, 
+           but we'll set a solid dark color for consistency inside the dropdown list */
+        background-color: #1a1a1a; 
         color: var(--text);
-        }
+    }
 
-        .show-btn {
+    .show-btn {
         position: absolute;
         right: 12px;
         top: 50%;
@@ -153,11 +172,12 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         font-weight: 600;
         cursor: pointer;
         font-size: 0.9rem;
-        }
+    }
 
-        button.submit {
-        background: linear-gradient(90deg, #9333ea, #a855f7, #c084fc);
-        color: #fff;
+    button.submit {
+        /* Solid orange for button background */
+        background: var(--primary); 
+        color: #0d0d0d; /* Black text on orange button */
         padding: 12px 18px;
         border: none;
         border-radius: var(--radius);
@@ -170,37 +190,39 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         justify-content: center;
         gap: 8px;
         position: relative;
-        }
+        transition: all 0.2s ease-in-out; /* Added transition for smooth hover */
+    }
 
-        button.submit:hover {
+    button.submit:hover {
         transform: translateY(-2px);
         background: var(--primary-hover);
         box-shadow: var(--shadow-lg);
-        }
+    }
 
-        p.hint {
+    p.hint {
         color: var(--muted);
         text-align: center;
         margin-top: 0.9rem;
         font-size: 0.9rem;
-        }
+    }
 
-        p.hint a {
+    p.hint a {
         color: var(--primary);
         font-weight: 600;
         text-decoration: none;
-        }
+    }
 
-        p.hint a:hover {
+    p.hint a:hover {
         color: var(--primary-hover);
         text-decoration: underline;
-        }
+    }
 
-        h1 {
+    h1 {
         text-align: center;
         margin-bottom: 20px;
-        }
-    </style>
+        color: var(--primary); /* Made h1 use the accent color */
+    }
+</style>
     </head>
     <body>
     <div class="container">

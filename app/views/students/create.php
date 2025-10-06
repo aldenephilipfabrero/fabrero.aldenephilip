@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create User</title>
-  <style>
+ <style>
+    /* 🎨 THEME: BLACK, ORANGE, WHITE */
     body {
       margin: 0;
       padding: 0;
@@ -13,7 +14,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #1e0034, #3b005c, #6b0080, #8b00a1);
+      /* Changed from Purple/Pink to Black/Dark Gray with Orange for depth */
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #252525, #333333); 
       background-size: 300% 300%;
       animation: gradientShift 8s ease infinite;
     }
@@ -24,34 +26,36 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* Form (Card) Style: Dark, translucent background */
     form {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(26, 26, 26, 0.75); /* Darker, less transparent background */
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-radius: 16px;
       padding: 30px 25px;
       width: 100%;
       max-width: 320px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-      color: #fff;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Stronger shadow */
+      color: #eeeeee; /* Off-White Text */
       text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 140, 0, 0.3); /* Subtle orange border */
       transition: transform 0.2s ease-in-out, box-shadow 0.3s;
     }
 
     form:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3); /* Orange glow on hover */
     }
 
     h1 {
       font-size: 1.4rem;
       font-weight: 600;
       margin-bottom: 20px;
-      color: #ffffff;
+      color: #ff8c00; /* Vibrant Orange Heading */
       letter-spacing: 1px;
     }
 
+    /* Input Fields Style */
     input[type="text"],
     input[type="email"],
     select {
@@ -60,31 +64,40 @@
       margin-bottom: 15px;
       border: none;
       border-radius: 10px;
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.08); /* Darker input background */
+      color: #eeeeee;
       font-size: 0.95rem;
       transition: all 0.3s ease;
       outline: none;
     }
+    
+    /* Dropdown Options (Specific fix for dark theme options) */
+    select option {
+        background: #1a1a1a;
+        color: #eeeeee;
+    }
 
     input::placeholder {
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(238, 238, 238, 0.6); /* Lighter placeholder text */
     }
 
     input:focus, select:focus {
-      background: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+      background: rgba(255, 140, 0, 0.1); /* Subtle orange focus background */
+      box-shadow: 0 0 6px rgba(255, 140, 0, 0.8); /* Orange focus glow */
+      border: 1px solid #ff8c00; /* Solid orange border on focus */
     }
 
+    /* Submit Button Style: Solid Orange */
     input[type="submit"] {
       width: 100%;
       padding: 12px;
       border: none;
       border-radius: 10px;
-      background: linear-gradient(135deg, #9b00ff, #ff007f);
-      color: #fff;
+      /* Solid Orange Background for high contrast */
+      background: #ff8c00; 
+      color: #0d0d0d; /* Black text on orange button */
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       letter-spacing: 1px;
       transition: all 0.3s ease;
@@ -92,9 +105,10 @@
     }
 
     input[type="submit"]:hover {
-      background: linear-gradient(135deg, #b100ff, #ff2ca3);
-      transform: scale(1.04);
-      box-shadow: 0 0 10px rgba(255, 0, 150, 0.5);
+      /* Darker orange on hover */
+      background: #ff6600; 
+      transform: scale(1.02); /* Slightly less dramatic scale */
+      box-shadow: 0 0 12px rgba(255, 140, 0, 0.7); /* Stronger orange glow */
     }
   </style>
 </head>

@@ -12,48 +12,68 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
+    /* Global Styles: Dark Background, White Text */
     body {
-      font-family: 'Rajdhani', sans-serif;
-      background: #0f1923;
-      color: #ece8e1;
+      font-family: 'Montserrat', sans-serif; /* Changed to a modern, geometric font */
+      background: #0d0d0d; /* Deep Black Background */
+      color: #eeeeee; /* Off-White Text */
+      margin: 0;
+      padding: 20px;
     }
-    .valorant-btn {
-      background: #ff4655;
-      color: #ece8e1;
-      padding: 10px 20px;
-      border-radius: 0.5rem;
+
+    /* Button Style: Vibrant Orange Accent */
+    .valorant-btn { /* Renamed to .orange-btn would be better, but keeping for direct substitution */
+      background: #ff8c00; /* Vibrant Orange */
+      color: #0d0d0d; /* Black Text on Orange for maximum contrast */
+      padding: 12px 25px;
+      border-radius: 4px; /* Slightly sharp corners */
       font-weight: bold;
-      letter-spacing: 1px;
-      transition: all 0.3s;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
     }
+
+    /* Button Hover Effect: Glow and Scale */
     .valorant-btn:hover {
-      background: #e03444;
-      box-shadow: 0 0 10px #ff4655;
-      transform: scale(1.05);
+      background: #ff6600; /* Darker Orange on Hover */
+      box-shadow: 0 0 15px rgba(255, 140, 0, 0.7); /* Orange Glow */
+      transform: translateY(-2px); /* Subtle lift instead of scale for a cleaner look */
     }
+
+    /* Table Structure */
     table {
       width: 100%;
       border-collapse: collapse;
       overflow: hidden;
-      border-radius: 0.5rem;
+      border-radius: 8px; /* Slightly softer table corners */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow on the table */
     }
+
+    /* Table Header: Orange Accent */
     th {
-      background: #ff4655;
-      color: #ece8e1;
+      background: #ff8c00; /* Vibrant Orange Header */
+      color: #0d0d0d; /* Black Text on Orange */
       text-transform: uppercase;
-      font-weight: bold;
-      padding: 12px;
+      font-weight: 700;
+      padding: 15px 12px;
+      text-align: left;
     }
+
+    /* Table Data Cells: Dark Internal Color */
     td {
       padding: 12px;
-      background: #1c252f;
-      border-bottom: 1px solid #2f3b45;
+      background: #1a1a1a; /* Dark Gray Cell Background */
+      border-bottom: 1px solid #333333; /* Darker separator line */
     }
+
+    /* Table Row Hover Effect: Light up */
     tr:hover td {
-      background: #252f3b;
-      transition: 0.3s;
+      background: #252525; /* Slightly lighter dark color on hover */
+      transition: background 0.3s;
     }
-  </style>
+</style>
 </head>
 <body class="p-6">
 

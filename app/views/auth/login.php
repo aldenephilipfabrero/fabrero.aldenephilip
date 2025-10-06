@@ -10,23 +10,40 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     <title>Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        :root {
-        --bg: linear-gradient(135deg, #1a032d 0%, #3d0c5d 50%, #5b1d82 100%);
-        --card-bg: rgba(255, 255, 255, 0.06);
-        --primary: #c084fc;
-        --primary-hover: #a855f7;
-        --border: rgba(192, 132, 252, 0.5);
-        --text: #f3e8ff;
-        --muted: #a78bfa;
-        --radius: 10px;
-        --input-bg: rgba(255, 255, 255, 0.08);
-        --input-focus: rgba(255, 255, 255, 0.15);
-        --shadow: 0 3px 24px 0 rgba(192, 132, 252, 0.25);
-        --shadow-lg: 0 6px 28px 0 rgba(192, 132, 252, 0.35);
-        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-        }
+    /* 🎨 CSS Variables (THEME CONFIGURATION) */
+    :root {
+        /* Background: Deep Black with a subtle dark gradient */
+        --bg: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
 
-        body {
+        /* Card/Element Backgrounds: Slightly opaque dark gray */
+        --card-bg: rgba(26, 26, 26, 0.7); /* Dark gray, slightly transparent */
+
+        /* Primary Accent Color: Vibrant Orange */
+        --primary: #ff8c00;
+        --primary-hover: #ff6600;
+
+        /* Border/Focus Color: Soft Orange for subtle glow */
+        --border: rgba(255, 140, 0, 0.5);
+
+        /* Text Colors: Off-White for high contrast */
+        --text: #eeeeee;
+        --muted: #cccccc; /* Slightly darker white for hints */
+
+        /* Design Constants */
+        --radius: 8px; /* Slightly tighter radius */
+        --input-bg: rgba(255, 255, 255, 0.05); /* Very dark input background */
+        --input-focus: rgba(255, 140, 0, 0.1); /* Light orange focus background */
+        --shadow: 0 3px 24px 0 rgba(255, 140, 0, 0.15); /* Soft Orange shadow */
+        --shadow-lg: 0 6px 28px 0 rgba(255, 140, 0, 0.35); /* Stronger Orange shadow */
+        
+        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    /* ---------------------------------------------------- */
+    /* All other styles now automatically use the new variables */
+    /* ---------------------------------------------------- */
+
+    body {
         margin: 0;
         background: var(--bg);
         display: flex;
@@ -34,83 +51,83 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         justify-content: center;
         min-height: 100vh;
         color: var(--text);
-        }
+    }
 
-        .container {
+    .container {
         width: 100%;
         max-width: 420px;
         padding: 16px;
-        }
+    }
 
-        .card {
+    .card {
         background: var(--card-bg);
         border: 1.5px solid var(--border);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
         padding: 28px 24px;
         backdrop-filter: blur(10px);
-        }
+    }
 
-        .header {
+    .header {
         text-align: center;
         margin-bottom: 24px;
-        }
+    }
 
-        .header h2 {
+    .header h2 {
         margin: 0;
         font-size: 1.9rem;
         font-weight: 700;
         color: var(--primary);
-        }
+    }
 
-        form {
+    form {
         display: flex;
         flex-direction: column;
         gap: 16px;
         align-items: center;
-        }
+    }
 
-        .input-icon, input, button {
+    .input-icon, input, button {
         width: 100%;
         max-width: 320px;
-        }
+    }
 
-        .input-icon {
+    .input-icon {
         position: relative;
         display: flex;
         align-items: center;
-        }
+    }
 
-        .input-icon i {
+    .input-icon i {
         position: absolute;
         left: 14px;
         color: var(--primary);
         font-size: 1em;
-        }
+    }
 
-        input {
+    input {
         padding: 12px 16px 12px 40px;
         border-radius: var(--radius);
         border: 1.5px solid var(--border);
         font-size: 0.95rem;
         background: var(--input-bg);
         color: var(--text);
-        }
+    }
 
-        input:focus {
+    input:focus {
         outline: none;
         border-color: var(--primary);
         background: var(--input-focus);
         box-shadow: var(--shadow-lg);
-        }
+    }
 
-        .relative {
+    .relative {
         position: relative;
         display: flex;
         align-items: center;
-        }
+    }
 
-        .show-btn {
+    .show-btn {
         position: absolute;
         left: 120px;
         top: 50%;
@@ -121,13 +138,14 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         font-weight: 600;
         cursor: pointer;
         font-size: 0.9rem;
-        }
+    }
 
 
-        button.submit {
-        background: linear-gradient(90deg, #9333ea, #a855f7, #c084fc);
-        color: #fff;
-        padding: 12px 18px 12px 40px;
+    button.submit {
+        /* Changed to solid orange for a cleaner look, kept gradient structure */
+        background: var(--primary); 
+        color: #0d0d0d; /* Black text on orange button */
+        padding: 12px 18px; /* Adjusted padding as icon is not in the button */
         border: none;
         border-radius: var(--radius);
         font-size: 0.95rem;
@@ -139,39 +157,40 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         justify-content: center;
         gap: 8px;
         position: relative;
-        }
-
-        button.submit i {
-        position: absolute;
-        left: 16px;
+    }
+    
+    /* Repositioned icon style for the submit button */
+    button.submit i {
+        position: relative; 
+        left: 0;
         font-size: 1em;
-        color: #f3e8ff;
-        }
+        color: #0d0d0d; /* Black icon on orange button */
+    }
 
-        button.submit:hover {
+    button.submit:hover {
         transform: translateY(-2px);
         background: var(--primary-hover);
         box-shadow: var(--shadow-lg);
-        }
+    }
 
-        p.hint {
+    p.hint {
         color: var(--muted);
         text-align: center;
         margin-top: 0.9rem;
         font-size: 0.9rem;
-        }
+    }
 
-        p.hint a {
+    p.hint a {
         color: var(--primary);
         font-weight: 600;
         text-decoration: none;
-        }
+    }
 
-        p.hint a:hover {
+    p.hint a:hover {
         color: var(--primary-hover);
         text-decoration: underline;
-        }
-    </style>
+    }
+</style>
     </head>
     <body>
     <div class="container">
