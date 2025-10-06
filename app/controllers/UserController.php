@@ -51,6 +51,11 @@ class UserController extends Controller {
 
     public function create()
     {
+        // require login
+        $this->call->library('Lauth');
+        if (!$this->Lauth->is_logged_in()) {
+            redirect('auth/login');
+        }
         if ($this->io->method() == 'post') {
         $first_name  = $this->io->post('first_name');
         $last_name = $this->io->post('last_name');
@@ -109,6 +114,11 @@ class UserController extends Controller {
     
         public function update($id)
         {
+            // require login
+            $this->call->library('Lauth');
+            if (!$this->Lauth->is_logged_in()) {
+                redirect('auth/login');
+            }
             $data ['student'] = $this->UserModel->find($id);
             if($this->io->method() == 'post')
             {
@@ -134,6 +144,13 @@ class UserController extends Controller {
 
         public function delete($id)
         {
+            // require admin
+            $this->call->library('Lauth');
+            if (!$this->Lauth->is_logged_in() || !$this->Lauth->has_role('admin')) {
+                echo 'Forbidden';
+                exit;
+            }
+
             if($this->UserModel->delete($id))
             {
                 redirect('/');
@@ -144,6 +161,12 @@ class UserController extends Controller {
 
         public function soft_delete($id)
         {
+            // require login
+            $this->call->library('Lauth');
+            if (!$this->Lauth->is_logged_in()) {
+                redirect('auth/login');
+            }
+
             if($this->UserModel->soft_delete($id))
             {
                 redirect('/');
@@ -154,6 +177,13 @@ class UserController extends Controller {
 
         public function restore($id)
         {
+            // require admin
+            $this->call->library('Lauth');
+            if (!$this->Lauth->is_logged_in() || !$this->Lauth->has_role('admin')) {
+                echo 'Forbidden';
+                exit;
+            }
+
             if($this->UserModel->restore($id))
             {
                 redirect('/');
