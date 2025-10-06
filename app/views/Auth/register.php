@@ -98,13 +98,8 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
   <div class="card w-full max-w-sm text-center">
     <img src="https://cdn-icons-png.flaticon.com/512/2942/2942077.png" alt="Building Logo" class="logo">
     <h1 class="text-2xl font-bold text-blue-400 mb-6 tracking-wide">Create Account</h1>
-    <?php if (!empty($error)): ?>
-      <div style="background:#ffe4e6;color:#991b1b;padding:0.5rem;border-radius:0.5rem;margin-bottom:1rem;">
-        <?= html_escape($error) ?>
-      </div>
-    <?php endif; ?>
 
-  <form action="<?= site_url('auth/register') ?>" method="post" class="space-y-4 text-left">
+    <form method="post" class="space-y-4 text-left">
       <!-- Username -->
       <div>
         <label class="block text-sm font-semibold text-gray-400 mb-1">Username</label>

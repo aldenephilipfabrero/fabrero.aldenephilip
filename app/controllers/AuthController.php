@@ -6,7 +6,6 @@ class AuthController extends Controller
     {
         $this->call->library('auth');
 
-        $data = [];
         if ($this->io->method() == 'post') {
             $username = $this->io->post('username');
             $password = $this->io->post('password');
@@ -14,23 +13,10 @@ class AuthController extends Controller
 
             if ($this->auth->register($username, $password, $role)) {
                 redirect('/students');
-            } else {
-                $data['error'] = $this->auth->get_last_error() ?? 'Registration failed';
             }
         }
 
-        // ensure the register view exists to avoid runtime exception in Invoker
-        $viewDir = APP_DIR . 'views' . DIRECTORY_SEPARATOR . 'auth';
-        $viewFile = $viewDir . DIRECTORY_SEPARATOR . 'register.php';
-        if (!file_exists($viewFile)) {
-            if (!is_dir($viewDir)) {
-                @mkdir($viewDir, 0755, true);
-            }
-            $default = "<?php\ndefined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');\n?>\n\n<h2>Register</h2>\n<form action=\"<?= site_url('auth/register') ?>\" method=\"post\">\n    <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n    <input type=\"password\" name=\"password\" placeholder=\"Password\" required>\n    <select name=\"role\">\n        <option value=\"user\">User</option>\n        <option value=\"admin\">Admin</option>\n    </select>\n    <button type=\"submit\">Register</button>\n</form>\n";
-            @file_put_contents($viewFile, $default);
-        }
-
-    $this->call->view('auth/register', $data);
+        $this->call->view('auth/register');
     }
 
     public function login()
