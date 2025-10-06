@@ -175,34 +175,22 @@ class Invoker {
 			extract($page_vars, EXTR_SKIP);
 		}
 		ob_start();
-		// Normalize path separators in the provided view name so it works across
-		// environments (Windows backslashes vs Unix forward slashes).
-		$normalized_view_file = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $view_file);
-		$view_path = APP_DIR . 'views' . DIRECTORY_SEPARATOR . $normalized_view_file;
-
-		// Determine target filename (append .php when no extension provided)
-		if (pathinfo($view_file, PATHINFO_EXTENSION) === '') {
-			$target = $view_path . '.php';
-		} else {
-			$target = $view_path;
-		}
-
-		// Fallback: if the normalized path does not exist, try the raw concatenation
-		// (handles cases where mixing separators previously worked or absolute paths were used)
-		if (! file_exists($target)) {
-			$alternate = APP_DIR . 'views' . DIRECTORY_SEPARATOR . $view_file;
-			if (pathinfo($view_file, PATHINFO_EXTENSION) === '') {
-				$alternate .= '.php';
+		$view = APP_DIR .'views' . DIRECTORY_SEPARATOR . $view_file;
+		if(strpos($view_file, '.') === false)
+		{
+			if(file_exists($view . '.php'))
+			{
+				require_once($view . '.php');
+			} else {
+				throw new RuntimeException($view_file . ' view file did not exist.');
 			}
-			if (file_exists($alternate)) {
-				$target = $alternate;
-			}
-		}
-
-		if (file_exists($target)) {
-			require_once($target);
 		} else {
-			throw new RuntimeException($view_file . ' view file did not exist.');
+			if(file_exists($view))
+			{
+				require_once($view);
+			} else {
+				throw new RuntimeException($view_file . ' view file does not exist.');
+			}
 		}
 		echo ob_get_clean();
 	}

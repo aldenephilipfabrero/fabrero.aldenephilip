@@ -111,7 +111,13 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
       Login to Your Account
     </h1>
 
-    <form method="post" class="space-y-4 text-left">
+    <?php if (!empty($this->session->userdata('flash_message'))): ?>
+      <div class="mb-4 px-4 py-3 rounded-md bg-green-800 text-green-200 text-sm">
+        <?= html_escape($this->session->userdata('flash_message')) ?>
+      </div>
+    <?php endif; ?>
+
+    <form method="post" class="space-y-4 text-left" novalidate aria-label="Login form">
       <!-- Username -->
       <div>
         <label class="block text-sm font-semibold text-gray-400 mb-1">Username</label>
@@ -129,12 +135,12 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
       </div>
 
       <!-- Login button -->
-      <button type="submit" class="company-btn">Login</button>
+      <button type="submit" class="company-btn" aria-label="Login to your account">Login</button>
     </form>
 
     <p class="text-center text-gray-400 mt-4 text-sm">
       Don’t have an account?  
-      <a href="<?= site_url('/') ?>" class="blue-link">Register</a>
+      <a href="<?= html_escape(site_url('/')) ?>" class="blue-link">Register</a>
     </p>
   </div>
 

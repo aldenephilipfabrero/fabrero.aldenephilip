@@ -85,10 +85,10 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     <h1 class="heading tracking-wide">Students Dashboard</h1>
     <p class="text-gray-300 text-lg mt-2">
       Welcome, <span class="font-semibold text-white">
-        <?= $this->call->library('session');('username') ?>
+        <?= html_escape($this->session->userdata('username') ?? 'Guest') ?>
       </span>
     </p>
-    <p class="text-sm text-gray-500">Role: <?= $this->call->library('session');('role') ?></p>
+    <p class="text-sm text-gray-400">Role: <?= html_escape($this->session->userdata('role') ?? '') ?></p>
   </div>
 
   <!-- Search Bar -->
@@ -104,26 +104,36 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
   <!-- Main Card -->
   <div class="max-w-5xl mx-auto card">
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach(html_escape($students) as $student): ?>
-        <tr>
-          <td><?= $student['id']; ?></td>
-          <td><?= $student['first_name']; ?></td>
-          <td><?= $student['last_name']; ?></td>
-          <td><?= $student['email']; ?></td>
-        </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-700">
+        <thead>
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">ID</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Firstname</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Lastname</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Email</th>
+          </tr>
+        </thead>
+        <tbody class="bg-transparent divide-y divide-gray-800">
+          <?php if (!empty($students) && is_array($students)): ?>
+            <?php foreach ($students as $student): ?>
+              <tr class="hover:bg-gray-800">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-200"><?= html_escape((string) ($student['id'] ?? '')) ?></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-200"><?= html_escape($student['first_name'] ?? '') ?></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-200"><?= html_escape($student['last_name'] ?? '') ?></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-200"><?= html_escape($student['email'] ?? '') ?></td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr>
+              <td colspan="4" class="px-6 py-12 text-center text-gray-400">
+                No students found. Try adjusting your search or add new students.
+              </td>
+            </tr>
+          <?php endif; ?>
+        </tbody>
+      </table>
+    </div>
 
     <!-- Pagination + Logout -->
     <div class="mt-6 flex justify-between items-center">

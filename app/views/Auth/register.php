@@ -99,7 +99,13 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     <img src="https://cdn-icons-png.flaticon.com/512/2942/2942077.png" alt="Building Logo" class="logo">
     <h1 class="text-2xl font-bold text-blue-400 mb-6 tracking-wide">Create Account</h1>
 
-    <form method="post" class="space-y-4 text-left">
+    <?php if (!empty($this->session->userdata('flash_message'))): ?>
+      <div class="mb-4 px-4 py-3 rounded-md bg-green-800 text-green-200 text-sm">
+        <?= html_escape($this->session->userdata('flash_message')) ?>
+      </div>
+    <?php endif; ?>
+
+    <form method="post" class="space-y-4 text-left" novalidate aria-label="Register form">
       <!-- Username -->
       <div>
         <label class="block text-sm font-semibold text-gray-400 mb-1">Username</label>
@@ -125,12 +131,12 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
       </div>
 
       <!-- Register button -->
-      <button type="submit" class="company-btn w-full">Register</button>
+      <button type="submit" class="company-btn w-full" aria-label="Create account">Register</button>
     </form>
 
     <p class="text-center text-gray-400 mt-4 text-sm">
       Already have an account? 
-      <a href="<?= site_url('auth/login') ?>" class="text-blue-400 font-semibold hover:underline">Login</a>
+      <a href="<?= html_escape(site_url('auth/login')) ?>" class="text-blue-400 font-semibold hover:underline">Login</a>
     </p>
   </div>
 

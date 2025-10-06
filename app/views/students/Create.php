@@ -109,7 +109,13 @@ input[type="submit"]:hover {
   </style>
 </head>
 <body>
-  <form class="container" action="<?=site_url('students/create');?>" method="post">
+  <?php if (!empty($this->session->userdata('flash_message'))): ?>
+    <div style="margin-bottom:16px;padding:12px;border-radius:8px;background:#e6fffa;color:#065f46;max-width:400px;text-align:left;">
+      <?= html_escape($this->session->userdata('flash_message')) ?>
+    </div>
+  <?php endif; ?>
+
+  <form class="container" action="<?= html_escape(site_url('students/create')) ?>" method="post" novalidate aria-label="Create student form">
     <!-- 🏢 Building Logo (visible, dark version) -->
     <img src="https://cdn-icons-png.flaticon.com/512/2942/2942077.png" alt="Building Logo" class="logo">
 
@@ -128,7 +134,7 @@ input[type="submit"]:hover {
       <option value="Project Manager">Project Manager</option>
     </select>
 
-    <input type="submit" value="Submit">
+  <input type="submit" value="Submit" aria-label="Submit student form">
 
     <div class="footer">
       🏢 &copy; 2025 Your Company Name. All Rights Reserved.

@@ -1,16 +1,14 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+// Use framework session library if available
+$user_id = $this->session->userdata('user_id') ?? null;
+if (empty($user_id)) {
+  header("Location: " . site_url('auth/login'));
+  exit;
 }
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: " . site_url('auth/login'));
-    exit;
-}
-
-$role = $_SESSION['role'] ?? null;
+$role = $this->session->userdata('role') ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -248,10 +246,10 @@ a[href*="delete"]:hover {
   </header>
 
   <div class="search-box">
-      <form method="get" action="<?=site_url('/students');?>">
-          <input type="text" name="q" placeholder="Search..." value="<?=isset($_GET['q']) ? html_escape($_GET['q']) : '';?>">
-          <button type="submit">Search</button>
-      </form>
+    <form method="get" action="<?= html_escape(site_url('/students')); ?>">
+      <input type="text" name="q" placeholder="Search..." value="<?= isset($_GET['q']) ? html_escape($_GET['q']) : '';?>" aria-label="Search students">
+      <button type="submit">Search</button>
+    </form>
   </div>
 
   <div class="table-wrapper">
@@ -266,18 +264,18 @@ a[href*="delete"]:hover {
           <th>Action</th>
         <?php endif; ?>
       </tr>
-      <?php if (!empty($students)): ?>
-          <?php foreach(html_escape($students) as $student): ?>
+      <?php if (!empty($students) && is_array($students)): ?>
+          <?php foreach($students as $student): ?>
           <tr>
-            <td><?=$student['id'];?></td>
-            <td><?=$student['last_name'];?></td>
-            <td><?=$student['first_name'];?></td>
-            <td><?=$student['email'];?></td>
-            <td><?=$student['Role'];?></td>
+            <td><?= html_escape((string) ($student['id'] ?? '')) ;?></td>
+            <td><?= html_escape($student['last_name'] ?? '') ;?></td>
+            <td><?= html_escape($student['first_name'] ?? '') ;?></td>
+            <td><?= html_escape($student['email'] ?? '') ;?></td>
+            <td><?= html_escape($student['Role'] ?? '') ;?></td>
             <?php if ($role === 'admin'): ?>
             <td>
-              <a href="<?=site_url('students/update/'.$student['id']);?>">Update</a>
-              <a href="<?=site_url('students/delete/'.$student['id']);?>">Delete</a>
+              <a href="<?= html_escape(site_url('students/update/'.($student['id'] ?? ''))); ?>">Update</a>
+              <a href="<?= html_escape(site_url('students/delete/'.($student['id'] ?? ''))); ?>">Delete</a>
             </td>
             <?php endif; ?>
           </tr>

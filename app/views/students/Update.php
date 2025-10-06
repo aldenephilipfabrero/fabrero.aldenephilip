@@ -118,35 +118,42 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 </head>
 <body>
 
-  <form class="card" action="<?=site_url('students/update/'.$student['id']);?>" method="post">
+  <?php if (!empty($this->session->userdata('flash_message'))): ?>
+    <div style="margin-bottom:16px;padding:12px;border-radius:8px;background:#ecfeff;color:#064e3b;max-width:420px;text-align:left;">
+      <?= html_escape($this->session->userdata('flash_message')) ?>
+    </div>
+  <?php endif; ?>
+
+  <form class="card" action="<?= html_escape(site_url('students/update/'.($student['id'] ?? ''))); ?>" method="post" novalidate aria-label="Update student form">
     <img src="https://cdn-icons-png.flaticon.com/512/2942/2942077.png" alt="Building Logo" class="logo">
     <h1>Update User</h1>
 
     <!-- Last Name -->
     <label for="last_name">Last Name</label>
-    <input type="text" id="last_name" name="last_name" value="<?=html_escape($student['last_name']);?>" required class="form-input">
+  <input type="text" id="last_name" name="last_name" value="<?= html_escape($student['last_name'] ?? '') ;?>" required class="form-input">
 
     <!-- First Name -->
     <label for="first_name">First Name</label>
-    <input type="text" id="first_name" name="first_name" value="<?=html_escape($student['first_name']);?>" required class="form-input">
+  <input type="text" id="first_name" name="first_name" value="<?= html_escape($student['first_name'] ?? '') ;?>" required class="form-input">
 
     <!-- Email -->
     <label for="email">Email</label>
-    <input type="email" id="email" name="email" value="<?=html_escape($student['email']);?>" required class="form-input">
+  <input type="email" id="email" name="email" value="<?= html_escape($student['email'] ?? '') ;?>" required class="form-input">
 
     <!-- Role Dropdown -->
     <label for="role">Role</label>
     <select id="role" name="role" required class="form-input">
-      <option value="Staff" <?=($student['Role'] == 'Staff') ? 'selected' : ''?>>Staff</option>
-      <option value="Full Stack Developer" <?=($student['Role'] == 'Full Stack Developer') ? 'selected' : ''?>>Full Stack Developer</option>
-      <option value="Front-End Developer" <?=($student['Role'] == 'Front-End Developer') ? 'selected' : ''?>>Front-End Developer</option>
-      <option value="Back-End Developer" <?=($student['Role'] == 'Back-End Developer') ? 'selected' : ''?>>Back-End Developer</option>
-      <option value="Project Manager" <?=($student['Role'] == 'Project Manager') ? 'selected' : ''?>>Project Manager</option>
+      <?php $roleVal = $student['Role'] ?? ''; ?>
+      <option value="Staff" <?= ($roleVal === 'Staff') ? 'selected' : '' ?>>Staff</option>
+      <option value="Full Stack Developer" <?= ($roleVal === 'Full Stack Developer') ? 'selected' : '' ?>>Full Stack Developer</option>
+      <option value="Front-End Developer" <?= ($roleVal === 'Front-End Developer') ? 'selected' : '' ?>>Front-End Developer</option>
+      <option value="Back-End Developer" <?= ($roleVal === 'Back-End Developer') ? 'selected' : '' ?>>Back-End Developer</option>
+      <option value="Project Manager" <?= ($roleVal === 'Project Manager') ? 'selected' : '' ?>>Project Manager</option>
     </select>
 
     <button type="submit" class="company-btn mt-3">Update</button>
 
-    <a href="<?=site_url('students');?>" class="back-btn">← Back to Records</a>
+    <a href="<?= html_escape(site_url('students')); ?>" class="back-btn">← Back to Records</a>
   </form>
 
 </body>
