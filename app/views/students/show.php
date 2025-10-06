@@ -1,18 +1,15 @@
 <?php 
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
-// ✅ Start session kung hindi pa naka-start
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// ✅ Redirect kung hindi naka-login
 if (!isset($_SESSION['user_id'])) {
     header("Location: " . site_url('auth/login'));
     exit;
 }
 
-// Para maiwasan notice error kung walang role
 $role = $_SESSION['role'] ?? null;
 ?>
 
@@ -21,7 +18,7 @@ $role = $_SESSION['role'] ?? null;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Showdata</title>
+  <title>Students List</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
@@ -93,6 +90,11 @@ $role = $_SESSION['role'] ?? null;
     .btn-danger {
       background: linear-gradient(90deg, #d4145a 0%, #fbb03b 100%);
       color: #fff;
+    }
+
+    .btn-danger:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(244, 67, 54, 0.5);
     }
 
     .btn-primary {
@@ -187,6 +189,24 @@ $role = $_SESSION['role'] ?? null;
       transform: scale(1.05);
     }
 
+    /* ✅ Logout center */
+    .logout-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    /* ✅ Dark mode styles */
+    body.dark {
+      background: linear-gradient(135deg, #0c0212 0%, #1d0723 40%, #3a0d3e 70%, #4b1b63 100%);
+      color: #ddd;
+    }
+
+    body.dark .container {
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 24px rgba(255,255,255,0.05);
+    }
+
     .dark-toggle {
       background: transparent;
       border: none;
@@ -199,6 +219,7 @@ $role = $_SESSION['role'] ?? null;
     .dark-toggle:hover {
       transform: scale(1.2);
     }
+
   </style>
 </head>
 
@@ -208,7 +229,7 @@ $role = $_SESSION['role'] ?? null;
       <h2>Students List</h2>
       <div style="display:flex; gap:12px; align-items:center;">
         <?php if ($role === 'admin'): ?>
-          <a href="<?= site_url('/students'); ?>" class="btn btn-success"><i class="fa fa-user-plus"></i> Add Student</a>
+          <a href="<?= site_url('/students/create'); ?>" class="btn btn-success"><i class="fa fa-user-plus"></i> Add Student</a>
         <?php endif; ?>
         <button class="dark-toggle" id="darkToggle"><i class="fa fa-moon"></i></button>
       </div>
@@ -264,17 +285,21 @@ $role = $_SESSION['role'] ?? null;
     </div>
     <?php endif; ?>
 
-    <!-- ✅ Logout button -->
-    <a href="<?=site_url('auth/logout');?>" class="btn btn-danger" style="margin-top:20px;"><i class="fa fa-sign-out"></i> Logout</a>
+    <!-- ✅ Centered Logout -->
+    <div class="logout-container">
+      <a href="<?=site_url('auth/logout');?>" class="btn btn-danger"><i class="fa fa-sign-out"></i> Logout</a>
+    </div>
   </div>
 
   <script>
     const toggle = document.getElementById("darkToggle");
     const body = document.body;
+
     if(localStorage.getItem("darkMode") === "1") {
       body.classList.add("dark");
       toggle.innerHTML = '<i class="fa fa-sun"></i>';
     }
+
     toggle.addEventListener("click", () => {
       body.classList.toggle("dark");
       const isDark = body.classList.contains("dark");
