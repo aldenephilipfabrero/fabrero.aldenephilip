@@ -1,111 +1,95 @@
+/* style2.css - Valorant Theme */
+
+:root {
+  --primary: #ff4655; /* Valorant red */
+  --primary-dark: #e03444;
+  --bg: #0f1923;      /* Dark Valorant background */
+  --card-bg: #1c252f;
+  --text: #ece8e1;
+  --muted: #8b8b8b;
+  --radius: 8px;
+}
+
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    /* New dark blue gradient background */
-    background: linear-gradient(135deg, #1f2837 0%, #0d121c 100%);
-    margin: 0;
-    padding: 40px;
-    min-height: 100vh;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--text);
 }
 
-/* --- Heading Modification --- */
+form {
+  background: var(--card-bg);
+  padding: 30px 25px;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  width: 100%;
+  max-width: 340px; /* compact size */
+  text-align: center;
+}
+
 h1 {
-    text-align: center;
-    color: #f7f9fb; /* Bright text for contrast */
-    margin-bottom: 40px;
-    font-size: 2.6rem; /* Slightly larger */
-    letter-spacing: 2px; /* Increased letter-spacing for elegance */
-    font-weight: 700;
-    /* Subtle text shadow for depth */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
-/* --- Form Container Modification (Dark Card) --- */
-.form-container {
-    width: 420px; /* Slightly wider */
-    margin: 0 auto;
-    background: #1a232f; /* Dark, subtle background for the form card */
-    padding: 40px; /* Increased padding */
-    border-radius: 20px; /* More rounded */
-    /* Pronounced, deep shadow for a floating effect */
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Light, subtle border */
-}
-
-/* --- Label Modification --- */
 label {
-    display: block;
-    margin-top: 24px; /* More space between fields */
-    font-weight: 600;
-    color: #aebecd; /* Light grey/blue label color */
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    font-size: 0.85rem; /* Slightly smaller for hierarchy */
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* --- Input Field Modification --- */
 input[type="text"],
 input[type="email"] {
-    width: 100%;
-    padding: 15px; /* More padding */
-    margin-top: 10px;
-    border: 1px solid #3d4a5d; /* Dark border for input box */
-    border-radius: 10px;
-    transition: border 0.3s, box-shadow 0.3s, background 0.3s;
-    font-size: 1.05rem;
-    background: #252e3b; /* Darker input background */
-    color: #f7f9fb; /* Bright text inside inputs */
+  width: 100%;
+  padding: 10px 2px;
+  margin-bottom: 14px;
+  border: 1px solid #2e3a46;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  background: #101823;
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* --- Input Focus Modification --- */
-input[type="text"]:focus,
-input[type="email"]:focus {
-    /* Accent color: vibrant orange/gold */
-    border-color: #ffc107; 
-    outline: none;
-    /* Soft gold glow on focus */
-    box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.3); 
-    background: #2c3847; /* Slight change in background on focus */
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(255, 70, 85, 0.4);
+  outline: none;
 }
 
-/* --- Submit Button Modification --- */
 input[type="submit"] {
-    width: 100%;
-    margin-top: 40px; 
-    padding: 18px; /* Larger button */
-    /* Bold, high-contrast gold/orange gradient */
-    background: linear-gradient(90deg, #ffc107 0%, #ff8c00 100%);
-    border: none;
-    border-radius: 12px;
-    color: #1a232f; /* Dark text on bright button for high contrast */
-    font-size: 1.2rem;
-    font-weight: 900; /* Extra bold text */
-    cursor: pointer;
-    /* Stronger, gold-tinted shadow */
-    box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);
-    letter-spacing: 1px;
-    transition: background 0.3s, box-shadow 0.3s, transform 0.15s;
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  border: none;
+  border-radius: var(--radius);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 input[type="submit"]:hover {
-    /* Subtle change in gradient direction on hover */
-    background: linear-gradient(90deg, #ff8c00 0%, #ffc107 100%);
-    box-shadow: 0 12px 40px rgba(255, 140, 0, 0.5);
-    transform: translateY(-2px); /* More noticeable lift effect */
+  background: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
-/* --- Back Link Modification --- */
-.back-link {
-    display: block;
-    text-align: center;
-    margin-top: 30px;
-    color: #ffc107; /* Match accent color */
-    text-decoration: none;
-    font-size: 1.05rem;
-    font-weight: 600;
-    transition: color 0.2s;
-}
-
-.back-link:hover {
-    text-decoration: underline;
-    color: #ff9800; /* Darker gold/orange on hover */
+input[type="submit"]:active {
+  transform: scale(0.98);
 }

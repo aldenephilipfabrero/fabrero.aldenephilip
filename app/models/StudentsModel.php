@@ -1,7 +1,5 @@
 <?php
-defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
-
-class AuthModel extends Model
+class StudentsModel extends Model
 {
     protected $table = 'users';
 
@@ -17,3 +15,4 @@ class AuthModel extends Model
         return $this->db->table($this->table)->get_all();
     }
 }
+?>

@@ -90,7 +90,7 @@ $config['base_url'] 				= 'https://fabrero-aldenephilip.onrender.com/';
 | variable to blank.
 |
 */
-$config['index_page']               = '';
+$config['index_page']               = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -230,7 +230,7 @@ $config['sess_expire_on_close']    = FALSE;
 */
 $config['cookie_prefix']           = '';
 $config['cookie_domain']           = '';
-$config['cookie_path']             = '/tmp';
+$config['cookie_path']             = '/';
 $config['cookie_secure']           = FALSE;
 $config['cookie_expiration']       = 86400;
 $config['cookie_httponly']         = FALSE;

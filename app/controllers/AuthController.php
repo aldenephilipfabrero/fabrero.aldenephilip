@@ -1,19 +1,18 @@
 <?php
-defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
-
 class AuthController extends Controller
 {
+
     public function register()
     {
-        $this->call->library('Lauth');
+        $this->call->library('auth');
 
         if ($this->io->method() == 'post') {
             $username = $this->io->post('username');
             $password = $this->io->post('password');
             $role = $this->io->post('role') ?? 'user';
 
-            if ($this->Lauth->register($username, $password, $role)) {
-                redirect('auth/login');
+            if ($this->auth->register($username, $password, $role)) {
+                redirect('/students');
             }
         }
 
@@ -21,54 +20,92 @@ class AuthController extends Controller
     }
 
     public function login()
-    {
-        $this->call->library('Lauth');
+{
+    $this->call->library('auth');
 
-        // Ensure the login view exists; if not, create a minimal fallback so the route doesn't break
-        $viewDir = APP_DIR . 'views' . DIRECTORY_SEPARATOR . 'auth';
-        $viewFile = $viewDir . DIRECTORY_SEPARATOR . 'login.php';
-        if (!file_exists($viewFile)) {
-            if (!is_dir($viewDir)) {
-                @mkdir($viewDir, 0755, true);
-            }
-            $default = "<h2>Login</h2>\n<form action=\"<?=site_url('auth/login');?>\" method=\"post\">\n    <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n    <input type=\"password\" name=\"password\" placeholder=\"Password\" required>\n    <button type=\"submit\">Login</button>\n</form>\n";
-            @file_put_contents($viewFile, $default);
-        }
+    if ($this->io->method() == 'post') {
+        $username = $this->io->post('username');
+        $password = $this->io->post('password');
 
-        if ($this->io->method() == 'post') {
-            $username = $this->io->post('username');
-            $password = $this->io->post('password');
+        if ($this->auth->login($username, $password)) {
 
-            if ($this->Lauth->login($username, $password)) {
-                redirect('auth/dashboard');
+            // check role and redirect accordingly
+            if ($this->auth->has_role('admin')) {
+                redirect('/students'); // full access page
             } else {
-                echo 'Login failed!';
+                redirect('auth/dashboard'); // user view-only page
             }
-        }
 
-        $this->call->view('auth/login');
+        } else {
+            echo 'Login failed!';
+        }
     }
 
-    public function dashboard()
-    {
-        $this->call->library(['Lauth', 'session']);
+    $this->call->view('auth/login');
+}
 
-        if (!$this->Lauth->is_logged_in()) {
-            redirect('auth/login');
+
+public function dashboard()
+{
+    // All users can view the student list
+        $page = 1;
+        if (isset($_GET['page']) && !empty($_GET['page'])) {
+            $page = $this->io->get('page');
         }
 
-        if (!$this->Lauth->has_role('admin')) {
-            echo 'Access denied!';
-            exit;
+        $q = '';
+        if (isset($_GET['q']) && !empty($_GET['q'])) {
+            $q = trim($this->io->get('q'));
         }
 
-        $this->call->view('auth/dashboard', ['session' => $this->session]);
+        $records_per_page = 5;
+
+        $all = $this->UserModel->page($q, $records_per_page, $page);
+        $data['students'] = $all['records'];
+        $total_rows = $all['total_rows'];
+
+        // Pagination setup
+        $this->pagination->set_options([
+            'first_link'     => '⏮ First',
+            'last_link'      => 'Last ⏭',
+            'next_link'      => 'Next →',
+            'prev_link'      => '← Prev',
+            'page_delimiter' => '&page='
+        ]);
+
+        $this->pagination->set_theme('default');
+        $this->pagination->initialize(
+            $total_rows,
+            $records_per_page,
+            $page,
+            site_url('/students') . '?q=' . urlencode($q)
+        );
+        $data['page'] = $this->pagination->paginate();
+
+        $this->call->view('students/show', $data);
+        
+    $this->call->library('auth');
+
+    if (!$this->auth->is_logged_in()) {
+        redirect('auth/login');
     }
+
+    $role = $_SESSION['role'] ?? 'user';
+
+    if ($role === 'admin') {
+        redirect('/students');
+    }
+
+}
+
+
 
     public function logout()
     {
-        $this->call->library('Lauth');
-        $this->Lauth->logout();
+        $this->call->library('auth');
+        $this->auth->logout();
         redirect('auth/login');
     }
+    
 }
+?>
