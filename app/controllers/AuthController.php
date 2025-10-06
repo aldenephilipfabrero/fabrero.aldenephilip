@@ -24,6 +24,17 @@ class AuthController extends Controller
     {
         $this->call->library('Lauth');
 
+        // Ensure the login view exists; if not, create a minimal fallback so the route doesn't break
+        $viewDir = APP_DIR . 'views' . DIRECTORY_SEPARATOR . 'auth';
+        $viewFile = $viewDir . DIRECTORY_SEPARATOR . 'login.php';
+        if (!file_exists($viewFile)) {
+            if (!is_dir($viewDir)) {
+                @mkdir($viewDir, 0755, true);
+            }
+            $default = "<h2>Login</h2>\n<form action=\"<?=site_url('auth/login');?>\" method=\"post\">\n    <input type=\"text\" name=\"username\" placeholder=\"Username\" required>\n    <input type=\"password\" name=\"password\" placeholder=\"Password\" required>\n    <button type=\"submit\">Login</button>\n</form>\n";
+            @file_put_contents($viewFile, $default);
+        }
+
         if ($this->io->method() == 'post') {
             $username = $this->io->post('username');
             $password = $this->io->post('password');
