@@ -1,99 +1,235 @@
- body {
-      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-      background: #0f1923; /* Valorant dark bg */
-      color: #fff;
-      margin: 0;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+table {
+            width: 90vw;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+            border: 1.5px solid #c3cfe2;
+            position: relative;
+            font-size: 1.08rem;
+        }
 
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 25px;
-      color: #ff4655; /* Valorant red */
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 36px;
+            font-size: 2.8rem;
+            font-family: 'Roboto', Arial, sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px #c3cfe2;
+            border-bottom: 2px solid #c3cfe2;
+            padding-bottom: 12px;
+        }
 
-    table {
-      width: 90%;
-      border-collapse: collapse;
-      background: #1b2735;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    }
+        th, td {
+            padding: 18px 22px;
+            text-align: center;
+            font-size: 1.08rem;
+            border: none;
+            color: #222;
+            font-family: 'Roboto', Arial, sans-serif;
+            vertical-align: middle;
+            border-bottom: 1px solid #e3eafc;
+        }
 
-    th, td {
-      padding: 14px 16px;
-      text-align: left;
-    }
+        th {
+            background: linear-gradient(90deg, #e3eafc 0%, #c3cfe2 100%);
+            color: #222;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 1.12rem;
+            border: none;
+            border-bottom: 2px solid #c3cfe2;
+            border-top: none;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            cursor: pointer;
+        }
 
-    th {
-      background: #111820;
-      color: #ff4655;
-      font-size: 0.95rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
+        tr:nth-child(even) {
+            background: #f8fbff;
+        }
 
-    tr:nth-child(even) {
-      background: #16212d;
-    }
+        tr {
+            transition: background 0.2s, box-shadow 0.2s;
+        }
 
-    tr:hover {
-      background: rgba(255, 70, 85, 0.1);
-    }
+        tr:hover {
+            background: #e3eafc;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            z-index: 1;
+            position: relative;
+            cursor: pointer;
+        }
 
-    td {
-      font-size: 0.9rem;
-      color: #e5e5e5;
-    }
+        tr.selected {
+            background: #c3cfe2 !important;
+            box-shadow: 0 0 0 2px #c3cfe2;
+        }
 
-    a {
-      display: inline-block;
-      margin-right: 8px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
+        .sort-arrow {
+            display: inline-block;
+            margin-left: 6px;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid #222;
+            vertical-align: middle;
+            transition: transform 0.2s;
+        }
 
-    a[href*="update"] {
-      background: #3b82f6; /* Blue for Update */
-      color: #fff;
-    }
+        .sort-arrow.desc {
+            transform: rotate(180deg);
+        }
 
-    a[href*="update"]:hover {
-      background: #2563eb;
-    }
+        tr:first-child th:first-child {
+            border-top-left-radius: 18px;
+        }
 
-    a[href*="soft-delete"] {
-      background: #ff4655; /* Valorant red for Delete */
-      color: #fff;
-    }
+        tr:first-child th:last-child {
+            border-top-right-radius: 18px;
+        }
 
-    a[href*="soft-delete"]:hover {
-      background: #e63946;
-    }
+        tr:last-child td:first-child {
+            border-bottom-left-radius: 18px;
+        }
 
-    a[href*="create"] {
-      margin-top: 20px;
-      background: #10b981; /* Teal for Create */
-      color: #fff;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
+        tr:last-child td:last-child {
+            border-bottom-right-radius: 18px;
+        }
 
-    a[href*="create"]:hover {
-      background: #059669;
-    }
+        td[title], th[title] {
+            position: relative;
+        }
+
+        td[title]:hover::after, th[title]:hover::after {
+            content: attr(title);
+            position: absolute;
+            left: 50%;
+            bottom: 120%;
+            transform: translateX(-50%);
+            background: #222;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 6px;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            opacity: 0.95;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 1rem;
+            margin: 0 6px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: 0.2s, color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-weight: 500;
+            display: inline-block;
+            background: linear-gradient(90deg, #c3cfe2 0%, #f5f7fa 100%);
+            color: #222;
+            border: 1.5px solid #c3cfe2;
+        }
+
+        a[href*="update"] {
+            background: linear-gradient(90deg, #f5f7fa 60%, #c3cfe2 100%);
+            color: #222;
+            border: 1.5px solid #c3cfe2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        a[href*="update"]:hover {
+            background: linear-gradient(90deg, #c3cfe2 60%, #f5f7fa 100%);
+            color: #222;
+            box-shadow: 0 4px 16px #c3cfe2;
+        }
+
+        a[href*="delete"] {
+            background: linear-gradient(90deg, #c3cfe2 60%, #f5f7fa 100%);
+            color: #222;
+            border: 1.5px solid #c3cfe2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        a[href*="delete"]:hover {
+            background: linear-gradient(90deg, #f5f7fa 60%, #c3cfe2 100%);
+            color: #222;
+            box-shadow: 0 4px 16px #c3cfe2;
+        }
+
+        /* * FIX: This container replaces the old .center-container.
+        * It matches the table's width and uses auto-margins to center 
+        * the container block, then uses text-align to center the button 
+        * inside it.
+        */
+        .button-container {
+            width: 90vw;
+            max-width: 900px;
+            margin: 40px auto 40px auto;
+            text-align: center;
+        }
+        .create-btn {
+            /* ...existing styles... */
+            margin-left: -700px; /* More offset to the left from center */
+        }
+        
+        /* The old .center-container class is removed as it caused vertical offset. */
+
+        .create-btn {
+            display: inline-block;
+            width: max-content;
+            
+            /* Removed conflicting margins (margin: 0 auto) and display: flex rules */
+            
+            padding: 14px 32px;
+            background: linear-gradient(90deg, #c3cfe2 0%, #f5f7fa 100%);
+            color: #222;
+            font-weight: 700;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            border: 1.5px solid #c3cfe2;
+            cursor: pointer;
+            letter-spacing: 1px;
+            font-family: 'Roboto', Arial, sans-serif;
+            transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+        }
+
+        .create-btn:hover {
+            background: linear-gradient(90deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #222;
+            box-shadow: 0 8px 32px #c3cfe2;
+        }
+
+        @media (max-width: 700px) {
+            table {
+                width: 99vw;
+                max-width: 99vw;
+                font-size: 1.02rem;
+            }
+            th, td {
+                padding: 12px 8px;
+                font-size: 1.02rem;
+            }
+            .create-btn {
+                padding: 14px 22px;
+                font-size: 1.05rem;
+            }
+            h1 {
+                font-size: 2.4rem;
+            }
+        }
+   
